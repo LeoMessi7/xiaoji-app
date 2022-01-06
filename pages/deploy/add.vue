@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<div class="deploy1">
-			<div class="form">
+			<div class="form"> 
 				<div class="p1">配置网络</div>
 				<img src="../../static/wifi.png" style="width: 70%;margin-top: 40rpx;"/>
 				<div class="p2">WIFI：</div>
