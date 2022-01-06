@@ -53,30 +53,30 @@
 		data() {
 			let validateUsername = (rule, value, callback) => {
 			    if (value === '') {
-					callback(new Error('请输入账号'))
+					callback(new Error('请输入账号'));
 			    } else {
-					callback() // 添加成功回调
+					callback(); // 添加成功回调
 			    }
 			}
 			let validateNickname = (rule, value, callback) => {
 			    if (value === '') {
-					callback(new Error('请输入昵称'))
+					callback(new Error('请输入昵称'));
 			    } else {
-					callback()
+					callback();
 			    }
 			}
 			let validatePassword = (rule, value, callback) => {
 			    if (value.length < 8 || value.length > 16) {
-					callback(new Error('请输入8到16位的密码'))
+					callback(new Error('请输入8到16位的密码'));
 			    } else {
-					callback()
+					callback();
 			    }
 			}
 			let validateConfirmedPassword = (rule, value, callback) => {
 				if (value !== this.newUserInfo.password) {
-					callback(new Error('两次输入的密码不一致'))
+					callback(new Error('两次输入的密码不一致'));
 			    } else {
-					callback()
+					callback();
 			    }
 			}
 			return {
@@ -125,25 +125,32 @@
 			changeKey(key) {
 				if (this.$refs['form1']) {
 				  this.$nextTick(function () {
-				    	this.$refs['form1'].clearValidate()
-				  })
+				    	this.$refs['form1'].clearValidate();
+				  });
 				} else if (this.$refs['form2']) {
 				  this.$nextTick(function () {
-				    	this.$refs['form2'].clearValidate()
-				  })
+				    	this.$refs['form2'].clearValidate();
+				  });
 				} 
-				this.key = key
+				this.key = key;
 			},
 			login() {
 				this.$refs.form1.validate().then(valid => {
-					console.log(valid)
+					uni.navigateTo({ url: '/pages/equip/index' })
 				    userLogin(this.userInfo.account, this.userInfo.password).then(res => {
 						if (res.data.code === 200) {
 							console.log(resp.data.object);
 							this.$store.commit('login', resp.data.object.id);
+							uni.showToast({
+							    title: '登录成功',
+							    duration: 1000
+							});
+							uni.switchTab({ url: '/pages/equip/index' });
 						} else {
-							this.$alert(resp.data.msg, '提示', {
-								confirmButtonText: '确定'
+							uni.showModal({
+								title: '登录失败',
+								content: res.data.msg,
+								showCancel: false
 							});
 						}						   
 					}).catch(failResponse => {});
@@ -155,10 +162,16 @@
 				    userRegister(this.newUserInfo.account, this.newUserInfo.nickname, this.newUserInfo.password).then(res => {
 						if (res.data.code === 200) {
 							console.log(resp.data.object);
-							this.$store.commit('login', resp.data.object.id);
+							uni.showToast({
+							    title: '注册成功',
+							    duration: 1000
+							});
+							changeKey(1);
 						} else {
-							this.$alert(resp.data.msg, '提示', {
-								confirmButtonText: '确定'
+							uni.showModal({
+								title: '注册失败',
+								content: res.data.msg,
+								showCancel: false
 							});
 						}						   
 					}).catch(failResponse => {});
