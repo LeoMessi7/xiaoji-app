@@ -38,7 +38,7 @@
 			</u--form>
 	
 		<u-button v-if="key===0" style="background-color: #3fd1ad;color: #fff; margin-top: 100rpx; width: 70%;" text="登录" size="large"
-			shape="circle" @click="key=0"></u-button>
+			shape="circle" @click="login()"></u-button>
 		<u-button style="background-color: #00aaff;color: #fff; margin-top: 30rpx; width: 70%;" text="注册" size="large"
 			shape="circle" @click="key=1"></u-button>
 		<p class="bottom">小济智能(xiaoji-smart)-一套完善的智能家居系统</p>
@@ -46,10 +46,11 @@
 </template>
 
 <script>
+	import {userLogin, userRegister} from "../../api/login/login.js"
 	export default {
 		data() {
 			return {
-				key:0,
+				key: 0,
 				model1: {
 					userInfo: {
 						account: '',
@@ -75,6 +76,25 @@
 			}
 		},
 		methods: {
+			login(){
+				let data = this.model1.userInfo;
+				this.$refs.item1.validate((valid) => {
+				    if (valid) {
+				       userLogin(data.account, data.password).then(res => {
+						   if (res.data.code === 200) {
+								console.log(resp.data.object);
+								this.$store.commit('login', resp.data.object.id);
+						   } else {
+							   this.$alert(resp.data.msg, '提示', {
+								   confirmButtonText: '确定'
+							   });
+						   }						   
+					   });
+				    } else {
+						console.log(123);
+					}
+				}).catch(failResponse => {});
+			}
 
 		}
 	}
