@@ -8,7 +8,7 @@
 			<div v-if="message.length!==0" class="none">
 				<div class="box" v-for="(item,index) in message">
 					<u-swipe-action>
-						<u-swipe-action-item :options="options2">
+						<u-swipe-action-item :options="options2" @click="bindClick(index)">
 							<view class="swipe-action u-border-top u-border-bottom">
 								<view class="swipe-action__content">
 									<div
@@ -39,18 +39,24 @@
 				}, {
 					title: '小济智能！',
 					content: '小济智能感谢您的第一次体验~'
+				},
+				{
+					title: '小济智能！',
+					content: '小济智能感谢您的第一次体验~'
+				},
+				{
+					title: '小济智能！',
+					content: '小济智能感谢您的第一次体验~'
 				}],
 				options2: [{
-					icon:'map',
-			
+					
+					text:"删除",
 					style: {
-						backgroundColor: '#3c9cff',
-						
-					}
-				}, {
-					icon:'map',
-					style: {
-						backgroundColor: '#f56c6c'
+						backgroundColor: '#f56c6c',
+						width:'100rpx',
+						height:'100rpx',
+						margin:'auto 20rpx 10rpx 20rpx',
+						padding:'0'
 					}
 				}],
 			}
@@ -59,6 +65,10 @@
 
 		},
 		methods: {
+			bindClick(index) {
+				console.log(index)
+						this.message.splice(index,1)
+					}
 
 		}
 	}
