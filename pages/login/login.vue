@@ -41,6 +41,8 @@
 			shape="circle" @click="key=0"></u-button>
 		<u-button style="background-color: #00aaff;color: #fff; margin-top: 30rpx; width: 70%;" text="注册" size="large"
 			shape="circle" @click="key=1"></u-button>
+			<u-button v-if="key===1" style="background-color: #3fd1ad;color: #fff; margin-top: 30rpx; width: 70%;" text="返回登录" size="large"
+				shape="circle" @click="key=0"></u-button>
 		<p class="bottom">小济智能(xiaoji-smart)-一套完善的智能家居系统</p>
 	</view>
 </template>
