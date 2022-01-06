@@ -1,6 +1,14 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+		    "path" : "pages/login/login",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "登录",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},{
 			"path": "pages/equip/index",
 			"style": {
 				"navigationBarTitleText": "设备",
@@ -21,6 +29,7 @@
 			"style": {
 				"navigationBarTitleText": "我的"
 			}
+<<<<<<< HEAD
 		}, {
 			"path": "pages/login/login",
 			"style": {
@@ -36,6 +45,16 @@
 
 			}
 
+=======
+		},{
+		    "path" : "pages/equip/detail",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "设备详情"
+	
+		    }
+		    
+>>>>>>> 920d870543b122070070143a02710ca9b6a3a1e8
 		},
 		{
 			"path": "pages/equip/function/car",
