@@ -115,7 +115,51 @@
 				</div>
 			</div>
 		</div>
+		
 		<div v-if="currentTabIndex===2" class="state">
+			<div v-if="Info.category==='树莓派'">
+				<div class="card">
+					<div class="head" :style="Info.color">
+						<div class="b"></div>
+						<div class="title">{{Info.name}}</div>
+					</div>
+					<div class="body">
+						<p>状态: {{Info.state}}</p>
+						<u-switch style="margin-top: 20rpx;float: left;" v-model="Info.key" activeColor="#3fd1ad"
+							@change="changekey(Info)">
+						</u-switch>
+					</div>
+				</div>
+				<u-divider style="margin: 0 3% 0 3%;width:94%" :lineColor="color" :dot="true"></u-divider>
+				<div class="function">
+					<span style="float: left; ">服务器地址：</span><br>
+						<u--input placeholder="请输入内容" border="bottom" clearable></u--input>				
+					<span style="float: left; ">客户端ID：</span><br>
+						<u--input placeholder="请输入内容" border="bottom" clearable></u--input>
+					<div class="1" style="margin-top: 20rpx;position: relative;width: 100%;" @click="upload">
+						<span style="margin-top: 12rpx;float: middle;color: #3fd1ad;font-size: 28rpx;margin-left: 15rpx;">测试连接</span>
+					</div>
+					<u-divider style="margin: 0 3% 0 3%;width:94%" :lineColor="color" :dot="true"></u-divider>
+					<div class="1" style="margin-top: 20rpx;position: relative;width: 100%;" @click="upload">
+						<img style="height: 40rpx;margin-top: 10rpx;float: left;" src="static/reload.png" />
+						<span style="margin-top: 12rpx;float: left;color: #3fd1ad;font-size: 28rpx;margin-left: 15rpx;">点击获取最新温度</span>
+					</div><br>
+					<div style="margin-top: 50rpx;position: relative;width: 100%;text-align: left;">
+						<span style="float: left;">温度:</span>
+						<span class="tip">{{lamp.temperature}}℃</span>
+						<span style="margin-left: 35%;">湿度:</span>
+						<span class="tip" style="width: 200rpx;">{{lamp.west}}RH%</span>
+					</div>
+					<div class="btn" style="position: relative;width: 90%;margin: auto;margin-top: 100rpx;">
+						<u-button style="width: 32%;float: left;border-radius: 50px;" text="返回" color="#3fd1ad"
+							@click="Back">
+						</u-button>
+						<u-button style="margin-left: 4%; width: 64%;float: left;border-radius: 50px;" text="应用"
+							color="#006dfe">
+						</u-button>
+					</div>
+				</div>
+			</div>
 			<div v-if="Info.category==='智能灯'">
 				<div class="card">
 					<div class="head" :style="Info.color">
@@ -397,6 +441,8 @@
 		list-style: none;
 		line-height: 70rpx;
 	}
+
+
 
 
 
