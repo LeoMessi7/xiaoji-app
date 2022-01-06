@@ -1,6 +1,6 @@
 <template>
 	<view>
-		智能测温
+		暂未开发
 	</view>
 </template>
 
