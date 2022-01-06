@@ -37,7 +37,7 @@
 	
 		<u-button v-if="key===0" style="background-color: #3fd1ad;color: #fff; margin-top: 100rpx; width: 70%;" text="登录" size="large"
 			shape="circle" @click="login()"></u-button>
-		<u-button v-if="key===0" style="background-color: #d60000;color: #fff; margin-top: 30rpx; width: 70%;" text="没有账号" size="large"
+		<u-button v-if="key===0" style="background-color: #F4606C;color: #fff; margin-top: 30rpx; width: 70%;" text="没有账号" size="large"
 			shape="circle" @click="changeKey(1)"></u-button>
 		<u-button v-if="key===1" style="background-color: #00aaff;color: #fff; margin-top: 30rpx; width: 70%;" text="注册" size="large"
 			shape="circle" @click="register()"></u-button>
