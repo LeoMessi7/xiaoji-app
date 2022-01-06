@@ -3,102 +3,98 @@
 		{
 			"path": "pages/equip/index",
 			"style": {
-				"navigationBarTitleText": "设备"
+				"navigationBarTitleText": "设备",
+				"titleNView": false
 			}
-		},{
+		}, {
 			"path": "pages/deploy/index",
 			"style": {
 				"navigationBarTitleText": "配置"
 			}
 		},{
+			"path": "pages/deploy/add",
+			"style": {
+				"navigationBarTitleText": "智能配网"
+			}
+		}, {
 			"path": "pages/my/index",
 			"style": {
 				"navigationBarTitleText": "我的"
 			}
-		}
-	    ,{
-            "path" : "pages/login/login",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "登录",
-                "enablePullDownRefresh": false
-            }
-            
-        },{
-		    "path" : "pages/equip/detail",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "设备详情"
-	
-		    }
-		    
-		},
-		{
-		    "path" : "pages/equip/function/car",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "遥控小车"
-			
-		    }
-		    
-		},
-		{
-		    "path" : "pages/equip/function/voice",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "语音交互"
-			
-		    }
-		    
-		},
-		{
-		    "path" : "pages/equip/function/mood",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "情绪检测"
-			
-		    }
-		    
-		},
-		{
-		    "path" : "pages/equip/function/temperature",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "智能测温"
-			
-		    }
-		    
-		},
-		{
-		    "path" : "pages/equip/function/music",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "音乐推荐"
-			
-		    }
-		    
-		},
-		{
-		    "path" : "pages/equip/function/beauty",
-		    "style" :                                                                                    
-		    {
-		        "navigationBarTitleText": "虚拟化妆"
-		    }
-		    
-		},{
-			"path" : "pages/my/myInfo",
-			"style" :                                                                                    
-			{
-			    "navigationBarTitleText": "账户信息"
+		}, {
+			"path": "pages/login/login",
+			"style": {
+				"navigationBarTitleText": "登录",
+				"enablePullDownRefresh": false,
+				"titleNView": false
 			}
-		},{
-			"path" : "pages/my/message",
-			"style" :                                                                                    
-			{
-			    "navigationBarTitleText": "消息"
+
+		}, {
+			"path": "pages/equip/detail",
+			"style": {
+				"navigationBarTitleText": "设备详情"
+
+			}
+
+		},
+		{
+			"path": "pages/equip/function/car",
+			"style": {
+				"navigationBarTitleText": "遥控小车"
+
+			}
+
+		},
+		{
+			"path": "pages/equip/function/voice",
+			"style": {
+				"navigationBarTitleText": "语音交互"
+
+			}
+
+		},
+		{
+			"path": "pages/equip/function/mood",
+			"style": {
+				"navigationBarTitleText": "情绪检测"
+
+			}
+
+		},
+		{
+			"path": "pages/equip/function/temperature",
+			"style": {
+				"navigationBarTitleText": "智能测温"
+
+		 }
+
+		},
+		{
+			"path": "pages/equip/function/music",
+			"style": {
+				"navigationBarTitleText": "音乐推荐"
+
+			}
+
+		},
+		{
+			"path": "pages/equip/function/beauty",
+			"style": {
+				"navigationBarTitleText": "虚拟化妆"
+			}
+
+		}, {
+			"path": "pages/my/myInfo",
+			"style": {
+				"navigationBarTitleText": "账户信息"
+			}
+		}, {
+			"path": "pages/my/message",
+			"style": {
+				"navigationBarTitleText": "消息"
 			}
 		}
-    ],
+	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
@@ -106,25 +102,25 @@
 		"backgroundColor": "#F8F8F8"
 	},
 	"tabBar": {
-	    "color": "#7A7E83",
-	    "selectedColor": "#1296db",
-	    "borderStyle": "black",
-	    "backgroundColor": "#ffffff",
-	    "list": [{
-	        "pagePath": "pages/equip/index",
-	        "iconPath": "static/equipment.png",
-	        "selectedIconPath": "static/equipment1.png",
-	        "text": "设备"
-	    }, {
-	        "pagePath": "pages/deploy/index",
-	        "iconPath": "static/deploy.png",
-	        "selectedIconPath": "static/deploy1.png",
-	        "text": "配置"
-	    }, {
-	        "pagePath": "pages/my/index",
-	        "iconPath": "static/my.png",
-	        "selectedIconPath": "static/my1.png",
-	        "text": "我的"
-	    }]
+		"color": "#7A7E83",
+		"selectedColor": "#1296db",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/equip/index",
+			"iconPath": "static/equipment.png",
+			"selectedIconPath": "static/equipment1.png",
+			"text": "设备"
+		}, {
+			"pagePath": "pages/deploy/index",
+			"iconPath": "static/deploy.png",
+			"selectedIconPath": "static/deploy1.png",
+			"text": "配置"
+		}, {
+			"pagePath": "pages/my/index",
+			"iconPath": "static/my.png",
+			"selectedIconPath": "static/my1.png",
+			"text": "我的"
+		}]
 	}
 }

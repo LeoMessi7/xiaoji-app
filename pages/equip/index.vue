@@ -1,5 +1,47 @@
 <template>
 	<view>
+		<u-navbar title="设备" :bgColor="bgcolor">
+			<view class="u-nav-slot" slot="left">
+				<u-icon name="list" size="25" @click="show=true"></u-icon>
+			</view>
+			<view class="u-nav-slot" slot="right">
+				<u-icon name="plus" size="25" @click="goto('add')"></u-icon>
+			</view>
+		</u-navbar>
+		<u-popup :show="show" mode="left" @close="close" @open="open" closeOnClickOverlay="true">
+			<view style="height: 250rpx;background-color: #3fd1ad;">
+				<view style="width: 100%;">
+					<u-avatar src="my.png" shape="circle" size="70"
+						style="margin-top: 30rpx;margin-left: 40rpx;float: left;"></u-avatar>
+					<text
+						style="float: left;margin-left: 20rpx;margin-top: 70rpx;height: 100rpx;margin-right: 200rpx;font-size: 40rpx;font-weight: 600;color: #fff;">匿名用户</text>
+				</view>
+				<text style="margin-left: 40rpx;color: #fff;">小济智能点亮智慧生活...</text>
+			</view>
+			<view style="height: 250rpx;">
+				<u-list>
+					<u-list-item >
+						<u-cell title="添加设备" size="large" :border="false" v-on:click="goto('add')"
+							style="margin-top: 30rpx;height: 100rpx;">
+							<u-avatar slot="icon" size="35" src="../../static/phone.png" style="margin-right: 30rpx;">
+							</u-avatar>
+						</u-cell>
+					</u-list-item>
+					<u-list-item>
+						<u-cell title="服务配置" size="large" v-on:click="goto('deploy')">
+							<u-avatar slot="icon" size="35" src="../../static/peizhi.png" style="margin-right: 30rpx;">
+							</u-avatar>
+						</u-cell>
+					</u-list-item>
+					<u-list-item>
+						<u-cell title="消息" size="large" :border="false" v-on:click="goto('message')">
+							<u-avatar slot="icon" size="35" src="../../static/news.png" style="margin-right: 30rpx;">
+							</u-avatar>
+						</u-cell>
+					</u-list-item>
+				</u-list>
+			</view>
+		</u-popup>
 		<u-tabs :list="list1" style="background-color: #FFFFFF;" :is-scroll="false" @change="change" sticky
 			:current="currentTabIndex" lineWidth="50">
 		</u-tabs>
@@ -50,13 +92,19 @@
 	export default {
 		data() {
 			return {
+
+				bgcolor: '#fff',
+				show: false,
 				list1: [{
-					name: '全部',
-				}, {
-					name: '树莓派',
-				}, {
-					name: '智能灯'
-				}, ],
+						name: '全部',
+					},
+					{
+						name: '树莓派',
+					},
+					{
+						name: '智能灯'
+					}
+				],
 				color1: 'background-color:#3fd1ad',
 				currentTabIndex: 0,
 				itemList: [{
@@ -107,8 +155,35 @@
 			toDetail(item) {
 				let Item = encodeURIComponent(JSON.stringify(item))
 				uni.navigateTo({
-					url: '/pages/equip/detail?Item='+ Item
+					url: '/pages/equip/detail?Item=' + Item
 				})
+			},
+			goto(content) {
+				switch (content) {
+					case 'add': {
+						uni.navigateTo({
+							url: '/pages/deploy/add'
+						})
+						break;
+					}
+					case 'deploy': {
+						uni.switchTab({
+							url: '/pages/deploy/index'
+						})
+						break;
+					}
+					case 'message': {
+						uni.navigateTo({
+							url: '/pages/my/message'
+						})
+						break;
+					}
+				}
+
+
+			},
+			close() {
+				this.show = false
 			}
 		}
 	}
