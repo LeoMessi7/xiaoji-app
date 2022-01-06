@@ -29,7 +29,7 @@
 			"style": {
 				"navigationBarTitleText": "我的"
 			}
-<<<<<<< HEAD
+
 		}, {
 			"path": "pages/login/login",
 			"style": {
@@ -45,7 +45,7 @@
 
 			}
 
-=======
+
 		},{
 		    "path" : "pages/equip/detail",
 		    "style" :                                                                                    
@@ -54,7 +54,7 @@
 	
 		    }
 		    
->>>>>>> 920d870543b122070070143a02710ca9b6a3a1e8
+
 		},
 		{
 			"path": "pages/equip/function/car",
