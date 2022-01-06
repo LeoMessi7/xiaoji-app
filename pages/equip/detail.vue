@@ -115,7 +115,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<div v-if="currentTabIndex===2" class="state">
 			<div v-if="Info.category==='树莓派'">
 				<div class="card">
@@ -131,18 +131,20 @@
 					</div>
 				</div>
 				<u-divider style="margin: 0 3% 0 3%;width:94%" :lineColor="color" :dot="true"></u-divider>
-				<div class="function">
+				<div class="function" style="margin-top: 50rpx;">
 					<span style="float: left; ">服务器地址：</span><br>
-						<u--input placeholder="请输入内容" border="bottom" clearable></u--input>				
-					<span style="float: left; ">客户端ID：</span><br>
-						<u--input placeholder="请输入内容" border="bottom" clearable></u--input>
-					<div class="1" style="margin-top: 20rpx;position: relative;width: 100%;" @click="upload">
-						<span style="margin-top: 12rpx;float: middle;color: #3fd1ad;font-size: 28rpx;margin-left: 15rpx;">测试连接</span>
+					<u--input placeholder="请输入内容" border="bottom" clearable style="margin-bottom: 40rpx;"></u--input>
+					<span style="float: left;">客户端ID：</span><br>
+					<u--input placeholder="请输入内容" border="bottom" clearable></u--input>
+					<div class="1" style="margin-top: 40rpx;position: relative;width: 100%;" @click="upload">
+						<span
+							style="margin-top: 12rpx;color: #3fd1ad;font-size: 28rpx;">测试连接</span>
 					</div>
-					<u-divider style="margin: 0 3% 0 3%;width:94%" :lineColor="color" :dot="true"></u-divider>
+					<u-divider style="margin: 20rpx 3% 0 3%;width:94%" :lineColor="color" :dot="true"></u-divider>
 					<div class="1" style="margin-top: 20rpx;position: relative;width: 100%;" @click="upload">
 						<img style="height: 40rpx;margin-top: 10rpx;float: left;" src="static/reload.png" />
-						<span style="margin-top: 12rpx;float: left;color: #3fd1ad;font-size: 28rpx;margin-left: 15rpx;">点击获取最新温度</span>
+						<span
+							style="margin-top: 12rpx;float: left;color: #3fd1ad;font-size: 28rpx;margin-left: 15rpx;">点击获取最新温度</span>
 					</div><br>
 					<div style="margin-top: 50rpx;position: relative;width: 100%;text-align: left;">
 						<span style="float: left;">温度:</span>
@@ -286,7 +288,7 @@
 					name: '树莓派1',
 					rename: '第一个',
 					id: '7CDFA1049ADA',
-					category: '智能灯',
+					category: '树莓派',
 					edition: 'v1.0',
 					state: '离线',
 					key: false,
@@ -302,8 +304,8 @@
 					temperature: '0.0',
 					west: '0.0',
 				},
-				btn:{
-					key:false,
+				btn: {
+					key: false,
 				},
 				rules: {
 					'Info.name': {
