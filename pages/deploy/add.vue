@@ -32,7 +32,7 @@
 				
 				</div>
 			<div class="btn">
-				<u-button style="width: 22%;float: left;border-radius: 50px;" text="返回" color="#3fd1ad" @click="Back">
+				<u-button style="width: 22%;float: left;border-radius: 50px;" text="返回" color="#3fd1ad" @click="back()">
 				</u-button>
 				<u-button style="margin-left: 4%; width: 22%;float: left;border-radius: 50px;" text="取消"
 					color="#ffaa7f">
@@ -84,7 +84,11 @@
 
 		},
 		methods: {
-			changecolor() {}
+			back() {
+				uni.navigateBack({
+					delta: 1
+				});
+			}
 		}
 	}
 </script>
