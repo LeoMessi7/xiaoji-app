@@ -8,7 +8,7 @@
 				<u-icon name="plus" size="25" @click="goto('add')"></u-icon>
 			</view>
 		</u-navbar>
-		<u-popup :show="show" mode="left" @close="close" @open="open" closeOnClickOverlay="true">
+		<u-popup :show="show" mode="left" @close="close" @open="open" :closeOnClickOverlay="true">
 			<view style="height: 250rpx;background-color: #3fd1ad;">
 				<view style="width: 100%;">
 					<u-avatar src="my.png" shape="circle" size="70"

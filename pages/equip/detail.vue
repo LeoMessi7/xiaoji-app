@@ -270,7 +270,7 @@
 					},
 					{
 						url: '/static/icon/temperature.png',
-						title: '智能测温',
+						title: '天气查看',
 						color: '#F4606C',
 						border: '0 0 10px 0'
 					},
@@ -397,7 +397,7 @@
 					}
 					case 5: {
 						uni.navigateTo({
-							url: '/pages/equip/function/temperature'
+							url: '/pages/equip/function/weather'
 						})
 						break;
 					}
