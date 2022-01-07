@@ -133,32 +133,11 @@
 				<u-divider style="margin: 0 3% 0 3%;width:94%" :lineColor="color" :dot="true"></u-divider>
 				<div class="function" style="margin-top: 50rpx;">
 					<span style="float: left; ">服务器地址：</span><br>
-					<u--input placeholder="请输入内容" border="bottom" clearable style="margin-bottom: 40rpx;"></u--input>
+					<u--input v-model="host" placeholder="请输入内容" border="bottom" clearable style="margin-bottom: 40rpx;"></u--input>
 					<span style="float: left;">客户端ID：</span><br>
-					<u--input placeholder="请输入内容" border="bottom" clearable></u--input>
-					<div class="1" style="margin-top: 40rpx;position: relative;width: 100%;" @click="upload">
-						<span
-							style="margin-top: 12rpx;color: #3fd1ad;font-size: 28rpx;">测试连接</span>
-					</div>
-					<u-divider style="margin: 20rpx 3% 0 3%;width:94%" :lineColor="color" :dot="true"></u-divider>
-					<div class="1" style="margin-top: 20rpx;position: relative;width: 100%;" @click="upload">
-						<img style="height: 40rpx;margin-top: 10rpx;float: left;" src="static/reload.png" />
-						<span
-							style="margin-top: 12rpx;float: left;color: #3fd1ad;font-size: 28rpx;margin-left: 15rpx;">点击获取最新温度</span>
-					</div><br>
-					<div style="margin-top: 50rpx;position: relative;width: 100%;text-align: left;">
-						<span style="float: left;">温度:</span>
-						<span class="tip">{{lamp.temperature}}℃</span>
-						<span style="margin-left: 35%;">湿度:</span>
-						<span class="tip" style="width: 200rpx;">{{lamp.west}}RH%</span>
-					</div>
-					<div class="btn" style="position: relative;width: 90%;margin: auto;margin-top: 100rpx;">
-						<u-button style="width: 32%;float: left;border-radius: 50px;" text="返回" color="#3fd1ad"
-							@click="Back">
-						</u-button>
-						<u-button style="margin-left: 4%; width: 64%;float: left;border-radius: 50px;" text="应用"
-							color="#006dfe">
-						</u-button>
+					<u--input v-model="clientId" placeholder="请输入内容" border="bottom" clearable></u--input>
+					<div class="1" style="margin-top: 20rpx;position: relative;width: 100%;" @click="testConnection()">
+						<span style="margin-top: 12rpx;float: middle;color: #3fd1ad;font-size: 28rpx;margin-left: 15rpx;">测试连接</span>
 					</div>
 				</div>
 			</div>
@@ -233,10 +212,18 @@
 </template>
 
 <script>
+	import mqtt from 'mqtt/dist/mqtt.js'
+	import {connection} from '@/utils/mqtt.js'
 	export default {
 		name: 'detail',
 		data() {
 			return {
+				host: connection.host,
+				clientId: connection.clientId,
+				receiveNews : '',
+				client : {
+					connected: false,
+				},
 				list: [{
 						url: '/static/icon/car.png',
 						title: '遥控小车',
@@ -405,7 +392,53 @@
 			},
 			upload() {
 				console.log(1)
-			}
+			},
+			testConnection() {
+			    // 连接字符串, 通过协议指定使用的连接方式
+			    // ws 未加密 WebSocket 连接
+			    // wss 加密 WebSocket 连接
+			    // mqtt 未加密 TCP 连接
+			    // mqtts 加密 TCP 连接
+			    // wxs 微信小程序连接
+			    // alis 支付宝小程序连接
+			    const { host, port, endpoint, ...options } = connection
+			    const connectUrl = `ws://${host}:${port}${endpoint}`
+			    try {
+			        this.client = mqtt.connect(connectUrl, options)
+			    } catch (error) {
+					console.log('mqtt.connect error', error)
+			    }
+			    this.client.on('connect', () => {
+					uni.showToast({
+					    title: '连接成功',
+					    duration: 1000
+					});
+			        console.log('Connection succeeded!')
+					this.disConnection()
+			    }).on('error', error => {
+					uni.showModal({
+						title: '连接失败',
+						showCancel: false
+					});
+			        console.log('Connection failed', error)
+			    }).on('message', (topic, message) => {
+			        this.receiveNews = this.receiveNews.concat(message)
+			        console.log(`Received message ${message} from topic ${topic}`)
+			    })
+			},
+			disConnection() {
+			    if (this.client.connected) {
+			        try {
+						this.client.end()
+						this.client = {
+							connected: false,
+						}
+							console.log('Successfully disconnected!')
+			        } catch (error) {
+						console.log('Disconnect failed', error.toString())
+			        }
+			    }
+			},
 		}
 	}
 </script>

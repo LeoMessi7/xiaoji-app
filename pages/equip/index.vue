@@ -124,9 +124,9 @@
 					{
 						category: 'pi',
 						title: '树莓派小车',
-						state: '离线',
-						key: false,
-						color: 'background-color:#dcdcdc',
+						state: '在线',
+						key: true,
+						color: 'background-color:#3fd1ad',
 					}
 				]
 			}

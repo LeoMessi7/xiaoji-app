@@ -1,8 +1,14 @@
 <template>
 	<view id="mood">
-		<camera device-position="back" flash="off" style="width: 100%;height: 400upx;">
+<!-- 		<camera device-position="back" flash="off" style="width: 100%;height: 400upx;">
 
-		</camera>
+		</camera> -->
+		<view style="width: 100%;text-align: center;margin-top: 30rpx;">
+			<text style="font-size: 40rpx;font-weight: 600;">图片</text>
+			<u--image :src=src width="100%" style="margin-left: 5%;margin-right: 5%;margin-top: 50rpx;" mode="widthFix">
+				<view slot="error" style="font-size: 24rpx;">加载失败</view>
+			</u--image>
+		</view>
 		<u-button style="width: 60%;border-radius: 50px;margin-top: 40rpx;" text="生成结果" color="#3fd1ad" @click="emotion()">
 		</u-button>
 		<view v-show=showResult style="width: 100%;text-align: center;margin-top: 30rpx;">

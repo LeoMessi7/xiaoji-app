@@ -1,13 +1,13 @@
 <template>
 	<view>
-		<camera device-position="back" flash="off" style="width: 100%;height: 400upx;">
+<!-- 		<camera device-position="back" flash="off" style="width: 100%;height: 400upx;">
 
-		</camera>
-<!-- 		<view style="width: 100%;text-align: center;margin-top: 30rpx;">
+		</camera> -->
+		<view style="width: 100%;text-align: center;margin-top: 30rpx;">
 			<u--image :src=origin width="100%" style="margin-left: 5%;margin-right: 5%;margin-top: 50rpx;" mode="widthFix">
 				<view slot="error" style="font-size: 24rpx;">加载失败</view>
 			</u--image>
-		</view> -->
+		</view>
 		<view style="width: 100%;text-align: center;margin-top: 50rpx;">
 			<text style="font-size: 40rpx;">选择口红色号</text>
 			<u-radio-group v-model="radiovalue1" placement="column" borderBottom iconPlacement="right" @change="groupChange" size="30" style="width: 60%;margin-left: 20%;margin-top: 50rpx;">
@@ -54,7 +54,7 @@
 				],
 				// u-radio-group的v-model绑定的值如果设置为某个radio的name，就会被默认选中
 				radiovalue1: '正红',
-				showResult: false,
+				showResult: true,
 				origin: "https://cdn.uviewui.com/uview/album/1.jpg",
 				result: "https://cdn.uviewui.com/uview/album/1.jpg"
 			};

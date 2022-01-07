@@ -24,11 +24,10 @@
 				</div>
 				<span style="font-weight: 600;color:#9a918d;position: absolute;left:100rpx;top:300rpx">摄像头</span>
 				<div class="stopbtn">
-					<u-button text="启动"
+					<u-button text="连接" @click="createConnection()"
 						style="border-radius: 100rpx;width: 70%;background-color: #beedc7;color: #ffffff;"></u-button>
-					<u-button text="暂停" @click="stop()"
-						style="border-radius: 100rpx;width: 70%;background-color: #f4606c;color: #ffffff;position: relative;margin-top: 40rpx;">
-					</u-button>
+					<u-button text="断开连接" @click="disConnection()"
+						style="border-radius: 100rpx;width: 70%;background-color: #f4606c;color: #ffffff;position: relative;margin-top: 40rpx;"></u-button>
 
 				</div>
 				<div
@@ -38,6 +37,7 @@
 					<img src="/static/btn/up.png" @click="controlCar('up')" /><br>
 					<div style="position:relative;height: 133rpx;">
 						<img style="position: absolute;left:0" src="/static/btn/left.png" @click="controlCar('left')" />
+						<img style="position: relative;left:0" src="/static/btn/stop.png" @click="stop()" />
 						<img style="position: absolute;right:0" src="/static/btn/right.png"
 							@click="controlCar('right')" /><br>
 					</div>
@@ -50,14 +50,39 @@
 </template>
 
 <script>
+	import mqtt from 'mqtt/dist/mqtt.js'
+	import {connection} from '@/utils/mqtt.js'
 	export default {
 		data() {
 			return {
+				subscription: {
+				    topic: 'test',
+				    qos: 0,
+				},
+				publish: {
+					topic: 'run',
+				    qos: 0,
+				    payload: '{ "msg": "Hello, YYDS Hello." }',
+				},
+				receiveNews: '',
+				qosList: [
+				    { label: 0, value: 0 },
+				    { label: 1, value: 1 },
+				    { label: 2, value: 2 },
+				],
+				client: {
+				    connected: false,
+				},
+				subscribeSuccess: false,
 				color: '#dcdcdc',
 				camera: {
 					state: false
 				},
-
+				publish: {
+				    topic: 'run',
+				    qos: 0,
+				    payload: '{ "msg": "Hello, YYDS Hello." }',
+				},
 			}
 		},
 		onLoad() {
@@ -78,20 +103,26 @@
 					port,
 					endpoint,
 					...options
-				} = this.connection
+				} = connection
 				const connectUrl = `ws://${host}:${port}${endpoint}`
 				try {
 					this.client = mqtt.connect(connectUrl, options)
 				} catch (error) {
+					uni.showModal({
+						title: '连接失败',
+						showCancel: false
+					});
 					console.log('mqtt.connect error', error)
 				}
+				uni.showToast({
+				    title: '连接成功',
+				    duration: 1000
+				});
 				this.client.on('connect', () => {
 					console.log('Connection succeeded!')
-				})
-				this.client.on('error', error => {
+				}).on('error', error => {
 					console.log('Connection failed', error)
-				})
-				this.client.on('message', (topic, message) => {
+				}).on('message', (topic, message) => {
 					this.receiveNews = this.receiveNews.concat(message)
 					console.log(`Received message ${message} from topic ${topic}`)
 				})
@@ -172,6 +203,7 @@
 						const topic = this.publish.topic
 						const qos = this.publish.qos
 						this.client.publish(topic, "4", qos, error => {
+							console.log(4)
 							if (error) {
 								console.log('Publish error', error)
 							}
@@ -254,25 +286,25 @@
 				// const { topic, qos, payload } = this.publish
 				const topic = this.publish.topic
 				const qos = this.publish.qos
+				console.log(5)
 				this.client.publish(topic, "5", qos, error => {
 					if (error) {
 						console.log('Publish error', error)
 					}
 				})
 			},
-			// 断开连接
-			destroyConnection() {
-				if (this.client.connected) {
-					try {
+			disConnection() {
+			    if (this.client.connected) {
+			        try {
 						this.client.end()
 						this.client = {
 							connected: false,
 						}
-						console.log('Successfully disconnected!')
-					} catch (error) {
+							console.log('Successfully disconnected!')
+			        } catch (error) {
 						console.log('Disconnect failed', error.toString())
-					}
-				}
+			        }
+			    }
 			},
 		}
 	}
