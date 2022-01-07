@@ -32,22 +32,6 @@
 			}
 
 		}, {
-			"path": "pages/login/login",
-			"style": {
-				"navigationBarTitleText": "登录",
-				"enablePullDownRefresh": false,
-				"titleNView": false
-			}
-
-		}, {
-			"path": "pages/equip/detail",
-			"style": {
-				"navigationBarTitleText": "设备详情"
-
-			}
-
-
-		},{
 		    "path" : "pages/equip/detail",
 		    "style" :                                                                                    
 		    {
