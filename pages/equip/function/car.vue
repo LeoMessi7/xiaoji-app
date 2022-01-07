@@ -26,7 +26,7 @@
 				<div class="stopbtn">
 					<u-button text="启动"
 						style="border-radius: 100rpx;width: 70%;background-color: #beedc7;color: #ffffff;"></u-button>
-					<u-button text="暂停"
+					<u-button text="暂停" @click="stop()"
 						style="border-radius: 100rpx;width: 70%;background-color: #f4606c;color: #ffffff;position: relative;margin-top: 40rpx;">
 					</u-button>
 
@@ -139,9 +139,11 @@
 			},
 			changekey(item) {
 				if (item.state) {
+					createConnection();
 					this.color = '#3fd1ad',
 						item.color = 'background-color:#3fd1ad'
 				} else {
+					destroyConnection();
 					this.color = '#dcdcdc',
 						item.color = 'background-color:#dcdcdc'
 				}
