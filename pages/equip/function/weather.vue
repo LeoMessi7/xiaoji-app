@@ -82,7 +82,7 @@ export default {
   /*margin-top: 40px;*/
 }
 .guide .title{
-  border-bottom: px solid darkslategrey;
+  border-bottom: 3px solid darkslategrey;
   background: azure;
   font-size: 20px;
   font-weight: bold;
