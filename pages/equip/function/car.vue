@@ -51,10 +51,7 @@
 
 <script>
 	import mqtt from 'mqtt/dist/mqtt.js'
-<<<<<<< HEAD
 	import {connection} from '@/utils/mqtt.js'
-=======
->>>>>>> 46e1542f87a93629c9d175fb232e2b5c9dc48b65
 	export default {
 		data() {
 			return {
@@ -81,13 +78,11 @@
 				camera: {
 					state: false
 				},
-<<<<<<< HEAD
 				publish: {
 				    topic: 'run',
 				    qos: 0,
 				    payload: '{ "msg": "Hello, YYDS Hello." }',
 				},
-=======
 				connection: {
 					host: '121.36.229.15',
 					port: 8083,
@@ -127,7 +122,6 @@
 					connected: false,
 				},
 				subscribeSuccess: false,
->>>>>>> 46e1542f87a93629c9d175fb232e2b5c9dc48b65
 			}
 		
 	},

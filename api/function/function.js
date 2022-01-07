@@ -15,3 +15,10 @@ export function getEmotion(image) {
 	params: {faceBase64: image}
   })
 }
+
+export function getWeather() {
+  return request({
+    url: '"/weather/weather/get"',
+    method: 'get',
+  })
+}

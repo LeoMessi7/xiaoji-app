@@ -80,6 +80,15 @@
 			    }
 			}
 			return {
+				user: {
+					id: '',
+					name: '',
+					nickname: '',
+					email: '',
+					phone: '',
+					createTime: '',
+					remark: '',
+				},
 				key : 0,
 				userInfo: {
 					account: '',
@@ -139,8 +148,16 @@
 					uni.navigateTo({ url: '/pages/equip/index' })
 				    userLogin(this.userInfo.account, this.userInfo.password).then(res => {
 						if (res.data.code === 200) {
-							console.log(resp.data.object);
-							this.$store.commit('login', resp.data.object.id);
+							console.log(res.data.object);
+							let object = res.data.object;
+							// this.user.id = object.id;
+							// this.user.name = object.username,
+							// this.user.nickname = object.nickname,
+							// this.user.email = object.email,
+							// this.user.phone = object.phone,
+							// this.user.createTime = object.createTime,
+							// this.user.remark = object.remark,
+							// this.$store.commit('login', this.user);
 							uni.showToast({
 							    title: '登录成功',
 							    duration: 1000
@@ -161,7 +178,7 @@
 					console.log(valid)
 				    userRegister(this.newUserInfo.account, this.newUserInfo.nickname, this.newUserInfo.password).then(res => {
 						if (res.data.code === 200) {
-							console.log(resp.data.object);
+							console.log(res.data.object);
 							uni.showToast({
 							    title: '注册成功',
 							    duration: 1000

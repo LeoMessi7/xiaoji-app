@@ -38,6 +38,7 @@
 </template>
 
 <script>
+	import {getWeather} from "../../../api/function/function.js"
 export default {
   name: "WeatherToday",
   data(){
@@ -49,7 +50,7 @@ export default {
   methods:{
     GetWeatherData(){
       let url = "/weather/weather/get";
-      this.$axios.get(url).then(response => {
+      getWeather().then(response => {
         // console.log(response.data.result)
         // console.log(response.data.result.realtime)
         // console.log(response.data.result.future)
@@ -61,7 +62,7 @@ export default {
         }
         this.$store.commit('setWeather',response.data.result)
         console.log(this.realtime);
-      })
+      }).catch(err=>{ console.log(err) });
     }
   },
   mounted(){

@@ -13,8 +13,8 @@
 				<view style="width: 100%;">
 					<u-avatar src="my.png" shape="circle" size="70"
 						style="margin-top: 30rpx;margin-left: 40rpx;float: left;"></u-avatar>
-					<text
-						style="float: left;margin-left: 20rpx;margin-top: 70rpx;height: 100rpx;margin-right: 200rpx;font-size: 40rpx;font-weight: 600;color: #fff;">匿名用户</text>
+					<text 
+						style="float: left;margin-left: 20rpx;margin-top: 70rpx;height: 100rpx;margin-right: 200rpx;font-size: 40rpx;font-weight: 600;color: #fff;"></span>{{name}}</li></text>
 				</view>
 				<text style="margin-left: 40rpx;color: #fff;">小济智能点亮智慧生活...</text>
 			</view>
@@ -89,10 +89,12 @@
 </template>
 
 <script>
+	import {getDeviceList} from "../../api/device/device.js"
+	import {getUserName} from "../../api/user/user.js"
 	export default {
 		data() {
 			return {
-
+				name: "匿名用户",
 				bgcolor: '#fff',
 				show: false,
 				list1: [{
@@ -107,7 +109,15 @@
 				],
 				color1: 'background-color:#3fd1ad',
 				currentTabIndex: 0,
-				itemList: [{
+				itemList: [
+					{
+						category: 'pi',
+						title: '树莓派小车',
+						state: '在线',
+						key: true,
+						color: 'background-color:#3fd1ad',
+					},
+					{
 						category: 'lamp',
 						title: '智能灯1',
 						state: '在线',
@@ -120,19 +130,49 @@
 						state: '离线',
 						key: false,
 						color: 'background-color:#dcdcdc',
-					},
-					{
-						category: 'pi',
-						title: '树莓派小车',
-						state: '在线',
-						key: true,
-						color: 'background-color:#3fd1ad',
 					}
 				]
 			}
 		},
-		onLoad() {
-
+		mounted() {
+			// this.name = this.$store.state.user.nickname;
+			
+			// getUserName().then(res => {
+			// 	if (res.data.code === 200) {
+			// 		console.log(res.data.object);
+			// 		this.name = res.data.object.username;
+			// 	} else {
+			// 		uni.showModal({
+			// 			title: '获取用户信息失败',
+			// 			content: res.data.msg,
+			// 			showCancel: false
+			// 		});
+			// 	}
+			// }).catch(failResponse => {});
+			
+			// getDeviceList().then(res => {
+			// 	if (res.data.code === 200) {
+			// 		console.log(res.data.object);
+			// 		let item = res.data.object;
+			// 		let length = res.data.object.length
+			// 		for (let i = 0; i < length; i++) {
+			// 		    this.options.push({
+			// 		        category : item[i].categoryName,
+			// 		        title : item[i].deviceName,
+			// 		        state : '离线',
+			// 		        key : false,
+			// 		        color : 'background-color:#dcdcdc',
+			// 			})
+			// 		}
+			// 	} else {
+			// 		uni.showModal({
+			// 			title: '获取失败',
+			// 			content: res.data.msg,
+			// 			showCancel: false
+			// 		});
+			// 	}
+			// }).catch(failResponse => {});
+			
 		},
 		methods: {
 			change(index) {

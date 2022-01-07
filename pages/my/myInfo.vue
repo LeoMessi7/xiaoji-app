@@ -20,21 +20,41 @@
 </template>
 
 <script>
+	import {getUserInfo} from "../../api/user/user.js"
 	export default {
 		data() {
 			return {
 				Info: {
-					name: 'LeoMessi',
-					nickname: 'LeoMessi7',
-					email: '1367027689@qq.com',
-					phone: '13294646128',
-					createTime: '2021-12-20 07:12:23',
-					remark: '测试员',
-				},
+					name: '',
+					nickname: '',
+					email: '',
+					phone: '',
+					createTime: '',
+					remark: '',
+				}
 			}
 		},
-		onLoad() {
-
+		mounted() {
+			this.Info = this.$store.state.user;
+			
+			// getUserInfo().then(res => {
+			// 	if (res.data.code === 200) {
+			// 		console.log(res.data.object);
+			// 		let info = res.data.object;
+			// 		this.Info.name = info.name,
+			// 		this.Info.nickname = info.nickname,
+			// 		this.Info.email = info.email,
+			// 		this.Info.phone = info.phone,
+			// 		this.Info.createTime = info.createTime,
+			// 		this.Info.remark = info.remark,
+			// 	} else {
+			// 		uni.showModal({
+			// 			title: '获取用户信息失败',
+			// 			content: res.data.msg,
+			// 			showCancel: false
+			// 		});
+			// 	}
+			// }).catch(failResponse => {});
 		},
 		methods: {
 
