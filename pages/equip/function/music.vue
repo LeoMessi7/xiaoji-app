@@ -7,12 +7,28 @@
 				style="position: relative;width: 480rpx;height: 480rpx;margin-top: 200rpx;">
 			</image><br>
 			<div style="margin-top: 40px;">
-				<text style="font-weight: 600;font-size: 50rpx;margin-top: 100rpx;">{{name }}<br><span style="font-weight: 500;font-size: 35rpx;">{{singer}}</span></text>
+				<text style="font-weight: 600;font-size: 50rpx;margin-top: 100rpx;">{{name }}<br><span
+						style="font-weight: 500;font-size: 35rpx;">{{singer}}</span></text>
 			</div>
 		</div>
 		<view style="width: 100%;display: flex;margin-top: 10%;">
-			<u-icon name="list" color="#535353" size="30" style="float: right;margin-left: 82%;"></u-icon>
+			<u-icon name="list" color="#535353" size="30" style="float: right;margin-left: 82%;" @click="open()">
+			</u-icon>
 		</view>
+		<div class="boxa1">
+			<view>
+				<u-popup :show="isOpen" mode="bottom" @close="close" @open="open()" :closeOnClickOverlay="true">
+					<view>
+						<ul>
+							<li v-for="item in musicList" @click="changeAudio(item)" style="height: 80rpx;font-size: 40rpx;margin-top: 20rpx;">
+								<label>{{item.name}}  {{item.singer}}</label>
+								
+							</li>
+						</ul>
+					</view>
+				</u-popup>
+			</view>
+		</div>
 		<view class="second-row-control">
 			<text class="start-time">{{startTime}}</text>
 			<view class="line" @click="emitClick">
@@ -21,12 +37,13 @@
 			<text class="end-time">{{endTime}}</text>
 		</view>
 		<div style="display: flex;text-align: center;margin-left: 28%;padding-bottom: 100rpx;padding-top: 20rpx;">
-			<u-icon name="skip-back-left" color="#535353" size="45" style="float: left;margin-top: 20rpx;"></u-icon>
+			<u-icon name="skip-back-left" color="#535353" size="45" style="float: left;margin-top: 20rpx;" @click="getLastSong"></u-icon>
 			<u-icon v-if="this.key===true" name="play-circle" color="#535353" size="60"
 				style="float:left;margin-left: 20rpx;margin-right: 20rpx;" @click="changeState()"></u-icon>
 			<u-icon v-if="this.key===false" name="pause-circle" color="#535353" size="60"
 				style="float: left;margin-left: 20rpx;margin-right: 20rpx;" @click="changeState()"></u-icon>
-			<u-icon name="skip-forward-right" color="#535353" size="45" style="float: right;margin-top: 20rpx;">
+			<u-icon name="skip-forward-right" color="#535353" size="45" style="float: right;margin-top: 20rpx;"
+				@click="getNextSong()">
 			</u-icon>
 		</div>
 	</view>
@@ -54,31 +71,119 @@
 </template>
 
 <script>
+	var innerAudioContext = uni.createInnerAudioContext();
+	innerAudioContext.autoplay = true;
 	export default {
 		data() {
 			return {
+				isOpen: false,
 				key: true,
 				startTime: '0.00',
 				endTime: '0.00',
-				name:'菊花残',
-				singer:'周杰伦',
+				id: '1',
+				name: '',
+				singer: '',
 				musicList: [{
-					startTime: '0:00',
-					endTime: '0:00'
-				}]
+					id: '1',
+					name: '致爱丽丝',
+					singer: '贝多芬',
+					src: 'https://sharefs.ali.kugou.com/202201071726/ab47acaff5bdfba17488c8b77dbda749/G209/M06/0C/17/EQ4DAF6wq0uAQkBrACTskSjWf6Y926.mp3',
+				},{
+					id: '2',
+					name: '月光の雲海',
+					singer: '久石譲',
+					src: 'https://sharefs.ali.kugou.com/202201071727/4a09ac1c230b14911b945449dd0302a1/KGTX/CLTX001/3767cd187b64b8dcf9841915b6f0256c.mp3',
+				},{
+					id: '3',
+					name: 'Summer ',
+					singer: '久石譲',
+					src: 'https://sharefs.ali.kugou.com/202201071729/fd150154ea349ee2950438c9f2a183a4/KGTX/CLTX001/654ca7d7d4abab8a85cd23523a5e693d.mp3',
+				},{
+					id: '4',
+					name: 'あの夏へ',
+					singer: '久石譲',
+					src: 'https://sharefs.ali.kugou.com/202201071727/60a15126d200ceab629ebf1dcb6adaef/KGTX/CLTX001/100e772a8a7a988993f228332a43a285.mp3',
+				}, {
+					id: '5',
+					name: '千百度',
+					singer: '许嵩',
+					src: 'https://sharefs.ali.kugou.com/202201071705/43a469e37a93e6959da8c3d536058b2c/KGTX/CLTX001/fe75c71646819dc6508922dee8eb8ad6.mp3',
+				}, {
+					id: '6',
+					name: '成都',
+					singer: '赵磊',
+					src: 'https://sharefs.ali.kugou.com/202201071709/9c0265f2869edcdfefff731026ffcd85/KGTX/CLTX001/a06b033b356bfc974c5245d0195086a5.mp3'
+				}],
+
 			}
 		},
 		onLoad() {
+
+
+
 
 		},
 		methods: {
 			changeState() {
 				this.key = !this.key;
-
+				if (this.key === false) {
+					innerAudioContext.play()
+				} else {
+					innerAudioContext.pause()
+				}
+			},
+			changeAudio(e) {
+				this.isOpen=false
+				this.key = false;
+				this.name = e.name;
+				this.singer = e.singer;
+				this.id = e.id;
+				innerAudioContext.src = e.src
+				console.log(innerAudioContext.duration)
+				this.endTime = innerAudioContext.duration
+				innerAudioContext.onPlay(() => {
+					console.log('1')
+				})
+				
+			},
+			getLastSong() {
+				if (this.id = 1)
+					return
+				var e = this.musicList[this.id]
+				this.key = false;
+				this.name = e.name;
+				this.singer = e.singer;
+				this.id = e.id;
+				innerAudioContext.src = e.src
+				this.endTime = innerAudioContext.duration
+				innerAudioContext.onPlay(() => {
+					console.log('1')
+				})
+			},
+			getNextSong() {
+				if (this.id >= this.musicList.length)
+					return
+				var e = this.musicList[this.id]
+				this.key = false;
+				this.name = e.name;
+				this.singer = e.singer;
+				this.id = e.id;
+				innerAudioContext.src = e.src
+				this.endTime = innerAudioContext.duration
+				innerAudioContext.onPlay(() => {
+					console.log('1')
+				})
 			},
 			emitClick(e) {
 				this.$emit('emitClick', e)
-			}
+			},
+			open() {
+				this.isOpen = true;
+			},
+			close() {
+				this.isOpen = false;
+			},
+
 		},
 		props: ['width'],
 
