@@ -82,9 +82,9 @@
 
 		},
 		{
-			"path": "pages/equip/function/temperature",
+			"path": "pages/equip/function/weather",
 			"style": {
-				"navigationBarTitleText": "智能测温"
+				"navigationBarTitleText": "今日天气"
 
 		 }
 
@@ -114,7 +114,16 @@
 				"navigationBarTitleText": "消息"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/cinema/cinema",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
