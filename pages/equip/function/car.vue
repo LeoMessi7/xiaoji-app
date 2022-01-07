@@ -50,6 +50,7 @@
 </template>
 
 <script>
+	import mqtt from 'mqtt/dist/mqtt.js'
 	export default {
 		data() {
 			return {
@@ -57,10 +58,49 @@
 				camera: {
 					state: false
 				},
-
+				connection: {
+					host: '121.36.229.15',
+					port: 8083,
+					endpoint: '/mqtt',
+					clean: true, // 保留会话
+					connectTimeout: 4000, // 超时时间
+					reconnectPeriod: 4000, // 重连时间间隔
+					// 认证信息
+					clientId: 'mqttjs_6320844fb9',
+					// username: 'xiaoji',
+					// password: 'xiaoji',
+				},
+				subscription: {
+					topic: 'test',
+					qos: 0,
+				},
+				publish: {
+					topic: 'run',
+					qos: 0,
+					payload: '{ "msg": "Hello, YYDS Hello." }',
+				},
+				receiveNews: '',
+				qosList: [{
+						label: 0,
+						value: 0
+					},
+					{
+						label: 1,
+						value: 1
+					},
+					{
+						label: 2,
+						value: 2
+					},
+				],
+				client: {
+					connected: false,
+				},
+				subscribeSuccess: false,
 			}
-		},
-		onLoad() {
+		
+	},
+	onLoad() {
 
 		},
 		methods: {
@@ -203,53 +243,53 @@
 				}
 			},
 			controlCamera(dir) {
-				switch (dir) {
-					case 'up': {
-						console.log(3)
-						const topic = this.publish.topic
-						const qos = this.publish.qos
-						this.client.publish(topic, "3", qos, error => {
-							if (error) {
-								console.log('Publish error', error)
-							}
-						})
-						break
-					}
-					case 'down': {
-						console.log(4)
-						const topic = this.publish.topic
-						const qos = this.publish.qos
-						this.client.publish(topic, "4", qos, error => {
-							if (error) {
-								console.log('Publish error', error)
-							}
-						})
-						break
-					}
-					case 'left': {
-						console.log(1)
-						const topic = this.publish.topic
-						const qos = this.publish.qos
-						this.client.publish(topic, "1", qos, error => {
-							if (error) {
-								console.log('Publish error', error)
-							}
-						})
-						break
-					}
-					case 'right': {
-						console.log(2)
-						const topic = this.publish.topic
-						const qos = this.publish.qos
-						this.client.publish(topic, "2", qos, error => {
-							if (error) {
-								console.log('Publish error', error)
-							}
-						})
-						break
-					}
-				}
-			},
+			// 	switch (dir) {
+			// 		case 'up': {
+			// 			console.log(3)
+			// 			const topic = this.publish.topic
+			// 			const qos = this.publish.qos
+			// 			this.client.publish(topic, "3", qos, error => {
+			// 				if (error) {
+			// 					console.log('Publish error', error)
+			// 				}
+			// 			})
+			// 			break
+			// 		}
+			// 		case 'down': {
+			// 			console.log(4)
+			// 			const topic = this.publish.topic
+			// 			const qos = this.publish.qos
+			// 			this.client.publish(topic, "4", qos, error => {
+			// 				if (error) {
+			// 					console.log('Publish error', error)
+			// 				}
+			// 			})
+			// 			break
+			// 		}
+			// 		case 'left': {
+			// 			console.log(1)
+			// 			const topic = this.publish.topic
+			// 			const qos = this.publish.qos
+			// 			this.client.publish(topic, "1", qos, error => {
+			// 				if (error) {
+			// 					console.log('Publish error', error)
+			// 				}
+			// 			})
+			// 			break
+			// 		}
+			// 		case 'right': {
+			// 			console.log(2)
+			// 			const topic = this.publish.topic
+			// 			const qos = this.publish.qos
+			// 			this.client.publish(topic, "2", qos, error => {
+			// 				if (error) {
+			// 					console.log('Publish error', error)
+			// 				}
+			// 			})
+			// 			break
+			// 		}
+			// 	}
+			 },
 			stop() {
 				// const { topic, qos, payload } = this.publish
 				const topic = this.publish.topic
