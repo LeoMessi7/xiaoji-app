@@ -13,10 +13,10 @@
 								<view class="swipe-action__content">
 									<div
 										style="width: 100%;text-align: left;margin-left: 50rpx;color: #212123;font-weight: 600;">
-										{{item.title}}
+										{{item.noticeTitle}}
 									</div><br>
 									<div style="width: 90%;;text-align: left;margin-left: 50rpx;color: #222224;">
-										{{item.content}}
+										{{item.noticeContent}}
 									</div>
 								</view>
 							</view>
@@ -30,23 +30,24 @@
 </template>
 
 <script>
+	import {getNotice} from "../../api/notice/notice.js"
 	export default {
 		data() {
 			return {
 				message: [{
-					title: '小济智能',
-					content: '小济智能感谢您的第一次体验小济智能感谢您的第一次体验小济智能感谢您的第一次体验小济智能感谢您的第一次体验~'
+					noticeTitle: '小济智能',
+					noticeContent: '小济智能感谢您的第一次体验小济智能感谢您的第一次体验小济智能感谢您的第一次体验小济智能感谢您的第一次体验~'
 				}, {
-					title: '小济智能！',
-					content: '小济智能感谢您的第一次体验~'
+					noticeTitle: '小济智能！',
+					noticeContent: '小济智能感谢您的第一次体验~'
 				},
 				{
-					title: '小济智能！',
-					content: '小济智能感谢您的第一次体验~'
+					noticeTitle: '小济智能！',
+					noticeContent: '小济智能感谢您的第一次体验~'
 				},
 				{
-					title: '小济智能！',
-					content: '小济智能感谢您的第一次体验~'
+					noticeTitle: '小济智能！',
+					noticeContent: '小济智能感谢您的第一次体验~'
 				}],
 				options2: [{
 					
@@ -61,8 +62,20 @@
 				}],
 			}
 		},
-		onLoad() {
+		mounted() {
+			// getNotice().then(res => {
+			// 	if (res.data.code === 200) {
+			// 		console.log(res.data);
+			// 		message = res.data.object;
 
+			// 	} else {
+			// 		uni.showModal({
+			// 			title: '获取消息失败',
+			// 			content: res.data.msg,
+			// 			showCancel: false
+			// 		});
+			// 	}
+			// }).catch(failResponse => {});
 		},
 		methods: {
 			bindClick(index) {
