@@ -114,15 +114,7 @@
 				"navigationBarTitleText": "消息"
 			}
 		}
-	    ,{
-            "path" : "pages/cinema/cinema",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
-                "enablePullDownRefresh": false
-            }
-            
-        }
+	   
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

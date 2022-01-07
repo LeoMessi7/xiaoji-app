@@ -1,6 +1,7 @@
 import App from './App'
 import store from './store'
 
+
 // #ifndef VUE3
 import Vue from 'vue'
 import uView from '@/uni_modules/uview-ui'
