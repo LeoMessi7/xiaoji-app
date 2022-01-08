@@ -104,6 +104,8 @@
 									showCancel: false
 								})
 							}
+							let value = 0
+							let moodNum = 0
 							for (let i = 0; i < 7; i++) {
 								let item = {}
 								if (i === 0) {
@@ -134,8 +136,22 @@
 									item.name = '恐惧'
 									item.value = res.data.fear
 								}
+								if (item.value >= value) {
+									value = item.value
+									moodNum = i
+								}
 								this.chartData.series[0].data.push(item)
 							}
+							uni.setStorage({
+								key: "moodNum",
+								data: moodNum
+							})
+							uni.getStorage({
+								key: "moodNum",
+								success(res){
+									console.log(res.data)
+								}
+							})
 							this.showResult = true;
 						} else {
 

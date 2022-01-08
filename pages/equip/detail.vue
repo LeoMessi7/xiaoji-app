@@ -4,21 +4,35 @@
 			:current="currentTabIndex" lineWidth="50">
 		</u-tabs>
 		<div v-if="currentTabIndex===0" class="equip">
+			<div class="head" :style="Info.color">
+				<div class="b"></div>
+				<div class="title">{{Info.name}}</div>
+			</div>
+			<div class="form">
+				<u--form style="margin: auto;" labelPosition="left" :label-style="{'font-size':'35rpx'}" :model="Info"
+					:rules="rules" ref="Info">
+					<u-form-item label="名称" prop="Info.name" border:none ref="Info">
+						<u--input placeholder="请输入内容" border="bottom" clearable></u--input>
+					</u-form-item>
+					<u-form-item label="备注" prop="Info.rename" border:none ref="Info">
+						<u--input placeholder="请输入内容" border="bottom" clearable></u--input>
+					</u-form-item>
+				</u--form>
+			</div>
 			<div class="detail">
-				<ul>					
-					<text style="float:left;margin-top:30rpx;height:20rpx;margin-right:50rpx;font-size:32rpx;font-weight:450;color:#000000x;">设备名称:</text>
-					<text style="float:left;margin-top:30rpx;height:20rpx;font-size:32rpx;font-weight:450;color:#000000x;">{{Info.name}}</text><br>
-					<text style="float:left;margin-top:30rpx;height:20rpx;margin-right:50rpx;font-size:32rpx;font-weight:450;color:#000000x;">设备编号:</text>
-					<text style="float:left;margin-top:30rpx;height:20rpx;;font-size:32rpx;font-weight:450;color:#000000x;">{{Info.num}}</text><br>
-					<text style="float:left;margin-top:30rpx;height:20rpx;margin-right:50rpx;font-size:32rpx;font-weight:450;color:#000000x;">设备分类:</text>
-					<text style="float:left;margin-top:30rpx;height:20rpx;font-size:32rpx;font-weight:450;color:#000000x;">{{Info.category}}</text><br>
-					<text style="float:left;margin-top:30rpx;height:20rpx;margin-right:50rpx;font-size:32rpx;font-weight:450;color:#000000x;">固件版本:</text>
-					<text style="float:left;margin-top:30rpx;height:20rpx;font-size:32rpx;font-weight:450;color:#000000x;">{{Info.version}}</text><br>
-					<text style="float:left;margin-top:30rpx;height:20rpx;margin-right:50rpx;font-size:32rpx;font-weight:450;color:#000000x;">创建时间:</text>
-					<text style="float:left;margin-top:30rpx;height:20rpx;font-size:32rpx;font-weight:450;color:#000000x;">{{Info.updateTime}}</text><br>
-					<text style="float:left;margin-top:30rpx;height:20rpx;margin-right:50rpx;font-size:32rpx;font-weight:450;color:#000000x;">备注:</text>
-					<text style="float:left;margin-top:30rpx;height:20rpx;font-size:32rpx;font-weight:450;color:#000000x;">{{Info.remark}}</text><br>
+				<ul>
+					<li><span>设备编号：</span>{{Info.id}}</li>
+					<li><span>设备分类：</span>{{Info.category}}</li>
+					<li><span>固件版本：</span>{{Info.edition}}</li>
+					<li><span>创建时间：</span>{{Info.createTime}}</li>
 				</ul>
+			</div>
+			<div class="btn" style="width:80%;margin: auto;margin-top: 50rpx;">
+				<u-button style="width: 32%;float: left;border-radius: 50px;" text="返回" color="#3fd1ad" @click="Back">
+				</u-button>
+				<u-button style="margin-left: 4%; width: 64%;float: left;border-radius: 50px;" text="保存"
+					color="#006dfe">
+				</u-button>
 			</div>
 		</div>
 		<div v-if="currentTabIndex===1" class="state">
@@ -123,11 +137,13 @@
 				<u-divider style="margin: 0 3% 0 3%;width:94%" :lineColor="color" :dot="true"></u-divider>
 				<div class="function" style="margin-top: 50rpx;">
 					<span style="float: left; ">服务器地址：</span><br>
-					<u--input v-model="host" placeholder="请输入内容" border="bottom" clearable style="margin-bottom: 40rpx;"></u--input>
+					<u--input v-model="host" placeholder="请输入内容" border="bottom" clearable
+						style="margin-bottom: 40rpx;"></u--input>
 					<span style="float: left;">客户端ID：</span><br>
 					<u--input v-model="clientId" placeholder="请输入内容" border="bottom" clearable></u--input>
 					<div class="1" style="margin-top: 20rpx;position: relative;width: 100%;" @click="testConnection()">
-						<span style="margin-top: 12rpx;float: middle;color: #3fd1ad;font-size: 28rpx;margin-left: 15rpx;">测试连接</span>
+						<span
+							style="margin-top: 12rpx;float: middle;color: #3fd1ad;font-size: 28rpx;margin-left: 15rpx;">测试连接</span>
 					</div>
 				</div>
 			</div>
@@ -203,15 +219,17 @@
 
 <script>
 	import mqtt from 'mqtt/dist/mqtt.js'
-	import {connection} from '@/utils/mqtt.js'
+	import {
+		connection
+	} from '@/utils/mqtt.js'
 	export default {
 		name: 'detail',
 		data() {
 			return {
 				host: connection.host,
 				clientId: connection.clientId,
-				receiveNews : '',
-				client : {
+				receiveNews: '',
+				client: {
 					connected: false,
 				},
 				list: [{
@@ -304,7 +322,7 @@
 			if (item.category === 'pi')
 				this.Info.category = '树莓派'
 			else {
-				this.Info.category = '智能灯'			
+				this.Info.category = '智能灯'
 			}
 		},
 		methods: {
@@ -375,50 +393,55 @@
 				console.log(1)
 			},
 			testConnection() {
-			    // 连接字符串, 通过协议指定使用的连接方式
-			    // ws 未加密 WebSocket 连接
-			    // wss 加密 WebSocket 连接
-			    // mqtt 未加密 TCP 连接
-			    // mqtts 加密 TCP 连接
-			    // wxs 微信小程序连接
-			    // alis 支付宝小程序连接
-			    const { host, port, endpoint, ...options } = connection
-			    const connectUrl = 'ws://${host}:${port}${endpoint}'
-			    try {
-			        this.client = mqtt.connect(connectUrl, options)
-			    } catch (error) {
+				// 连接字符串, 通过协议指定使用的连接方式
+				// ws 未加密 WebSocket 连接
+				// wss 加密 WebSocket 连接
+				// mqtt 未加密 TCP 连接
+				// mqtts 加密 TCP 连接
+				// wxs 微信小程序连接
+				// alis 支付宝小程序连接
+				const {
+					host,
+					port,
+					endpoint,
+					...options
+				} = connection
+				const connectUrl = 'ws://${host}:${port}${endpoint}'
+				try {
+					this.client = mqtt.connect(connectUrl, options)
+				} catch (error) {
 					console.log('mqtt.connect error', error)
-			    }
-			    this.client.on('connect', () => {
+				}
+			 this.client.on('connect', () => {
 					uni.showToast({
-					    title: '连接成功',
-					    duration: 1000
+						title: '连接成功',
+						duration: 1000
 					});
-			        console.log('Connection succeeded!')
+					console.log('Connection succeeded!')
 					this.disConnection()
-			    }).on('error', error => {
+				}).on('error', error => {
 					uni.showModal({
 						title: '连接失败',
 						showCancel: false
 					});
-			        console.log('Connection failed', error)
-			    }).on('message', (topic, message) => {
-			        this.receiveNews = this.receiveNews.concat(message)
-			        console.log(`Received message ${message} from topic ${topic}`)
-			    })
+					console.log('Connection failed', error)
+				}).on('message', (topic, message) => {
+					this.receiveNews = this.receiveNews.concat(message)
+					console.log(`Received message ${message} from topic ${topic}`)
+				})
 			},
 			disConnection() {
-			    if (this.client.connected) {
-			        try {
+				if (this.client.connected) {
+					try {
 						this.client.end()
 						this.client = {
 							connected: false,
 						}
-							console.log('Successfully disconnected!')
-			        } catch (error) {
+						console.log('Successfully disconnected!')
+					} catch (error) {
 						console.log('Disconnect failed', error.toString())
-			        }
-			    }
+					}
+				}
 			},
 		}
 	}
