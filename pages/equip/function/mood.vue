@@ -92,10 +92,12 @@
 					faceBase64 = dataURL.split(",")[1];
 					//console.log(faceBase64);
 					getEmotion(faceBase64).then(res => {
+						console.log(res)
 						if (res.data.code === 200) {
 							this.result = "data:image/jpg;base64," + btoa(new Uint8Array(res.data).reduce((res, byte) => res + String.fromCharCode(byte), ''));
 							showResult = true;
 						} else {
+							console.log(123)
 							uni.showModal({
 								content: res.data.msg,
 								showCancel: false

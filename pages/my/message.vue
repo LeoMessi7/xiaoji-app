@@ -7,12 +7,15 @@
 			</div>
 			<div v-if="message.length!==0" class="none">
 				<div class="box" v-for="(item,index) in message">
+					<div style="width: 90%;;text-align: left;margin-left: 50rpx;color: #222224;">
+						{{item.updateTime}}
+					</div>
 					<u-swipe-action>
 						<u-swipe-action-item :options="options2" @click="bindClick(index)">
 							<view class="swipe-action u-border-top u-border-bottom">
 								<view class="swipe-action__content">
 									<div
-										style="width: 100%;text-align: left;margin-left: 50rpx;color: #212123;font-weight: 600;">
+										style="width: 80%;text-align: left;margin-left: 50rpx;color: #212123;font-weight: 600;">
 										{{item.noticeTitle}}
 									</div><br>
 									<div style="width: 90%;;text-align: left;margin-left: 50rpx;color: #222224;">
@@ -35,19 +38,9 @@
 		data() {
 			return {
 				message: [{
-					noticeTitle: '小济智能',
-					noticeContent: '小济智能感谢您的第一次体验小济智能感谢您的第一次体验小济智能感谢您的第一次体验小济智能感谢您的第一次体验~'
-				}, {
 					noticeTitle: '小济智能！',
-					noticeContent: '小济智能感谢您的第一次体验~'
-				},
-				{
-					noticeTitle: '小济智能！',
-					noticeContent: '小济智能感谢您的第一次体验~'
-				},
-				{
-					noticeTitle: '小济智能！',
-					noticeContent: '小济智能感谢您的第一次体验~'
+					noticeContent: '小济智能感谢您的第一次体验~',
+					updateTime: '2021-12-20 15:07:10'
 				}],
 				options2: [{
 					
@@ -63,19 +56,26 @@
 			}
 		},
 		mounted() {
-			// getNotice().then(res => {
-			// 	if (res.data.code === 200) {
-			// 		console.log(res.data);
-			// 		message = res.data.object;
-
-			// 	} else {
-			// 		uni.showModal({
-			// 			title: '获取消息失败',
-			// 			content: res.data.msg,
-			// 			showCancel: false
-			// 		});
-			// 	}
-			// }).catch(failResponse => {});
+			getNotice().then(res => {
+				if (res.data.code === 200) {
+					console.log(res.data);
+					let total = res.data.total;
+					let rows = res.data.rows;
+					for (var i = 0; i < total; i++) {
+						this.message.push({
+							noticeTitle: rows[i].noticeTitle,
+							noticeContent: rows[i].noticeContent,
+							updateTime: rows[i].updateTime
+						});
+					}
+				} else {
+					uni.showModal({
+						title: '获取消息失败',
+						content: res.data.msg,
+						showCancel: false
+					});
+				}
+			}).catch(failResponse => {});
 		},
 		methods: {
 			bindClick(index) {
