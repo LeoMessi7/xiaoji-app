@@ -37,7 +37,7 @@
 			<text class="end-time">{{endTime}}</text>
 		</view>
 		<div style="display: flex;text-align: center;margin-left: 28%;padding-bottom: 100rpx;padding-top: 20rpx;">
-			<u-icon name="skip-back-left" color="#535353" size="45" style="float: left;margin-top: 20rpx;" @click="getLastSong"></u-icon>
+			<u-icon name="skip-back-left" color="#535353" size="45" style="float: left;margin-top: 20rpx;" @click="getLastSong()"></u-icon>
 			<u-icon v-if="this.key===true" name="play-circle" color="#535353" size="60"
 				style="float:left;margin-left: 20rpx;margin-right: 20rpx;" @click="changeState()"></u-icon>
 			<u-icon v-if="this.key===false" name="pause-circle" color="#535353" size="60"
@@ -47,27 +47,7 @@
 			</u-icon>
 		</div>
 	</view>
-	<!-- <view class="control-container" :class="themeType==='light'?'ft-deep-light':'ft-deep'">
-		<view class="first-row-control">
-			<text class="control-item collection iconfont icon-jushoucang"></text>
-			<text class="control-item download iconfont icon-xiazai"></text>
-			<text class="control-item comment iconfont icon-review"></text>
-			<text class="control-item other iconfont icon-paixu"></text>
-		</view>
-		<view class="second-row-control">
-			<text class="start-time">{{startTime}}</text>
-			<myuni-line class="myline" ref="line" @emitClick="changeProgress" :width="currentWidth"></myuni-line>
-			<text class="end-time">{{endTime}}</text>
-		</view>
-		<view class="thrid-row-control">
-			<text class="control-item playway iconfont" :class="single?'icon-24gl-repeatOnce2':'icon-24gl-repeat2'" @click="emitChangePlayWay"></text>
-			<view class="play-control-box">
-				<text class="control-item pre iconfont icon-shangyishoushangyige"  @click="emitPre"></text>
-				<text class="control-item play iconfont" :class="playing?'icon-weibiaoti--':'icon-bofang1'" @click="emitPlay"></text>
-				<text class="control-item next iconfont icon-xiayigexiayishou" @click="emitNext"></text>
-			</view>
-		</view>
-	</view> -->
+
 </template>
 
 <script>
@@ -92,17 +72,17 @@
 					id: '2',
 					name: '月光の雲海',
 					singer: '久石譲',
-					src: 'https://sharefs.ali.kugou.com/202201071727/4a09ac1c230b14911b945449dd0302a1/KGTX/CLTX001/3767cd187b64b8dcf9841915b6f0256c.mp3',
+					src: 'https://sharefs.ali.kugou.com/202201082258/ae422476d8a9ddb658ea0b5e838ff625/KGTX/CLTX001/3767cd187b64b8dcf9841915b6f0256c.mp3',
 				},{
 					id: '3',
 					name: 'Summer ',
 					singer: '久石譲',
-					src: 'https://sharefs.ali.kugou.com/202201071729/fd150154ea349ee2950438c9f2a183a4/KGTX/CLTX001/654ca7d7d4abab8a85cd23523a5e693d.mp3',
+					src: 'http://music.163.com/song/media/outer/url?id=1867107328.mp3',
 				},{
 					id: '4',
 					name: 'あの夏へ',
 					singer: '久石譲',
-					src: 'https://sharefs.ali.kugou.com/202201071727/60a15126d200ceab629ebf1dcb6adaef/KGTX/CLTX001/100e772a8a7a988993f228332a43a285.mp3',
+					src: 'https://sharefs.ali.kugou.com/202201082258/eb55db6465beae99d5749121c28dd8d7/KGTX/CLTX001/100e772a8a7a988993f228332a43a285.mp3',
 				}, {
 					id: '5',
 					name: '千百度',
@@ -118,10 +98,6 @@
 			}
 		},
 		onLoad() {
-
-
-
-
 		},
 		methods: {
 			changeState() {
@@ -139,7 +115,6 @@
 				this.singer = e.singer;
 				this.id = e.id;
 				innerAudioContext.src = e.src
-				console.log(innerAudioContext.duration)
 				this.endTime = innerAudioContext.duration
 				innerAudioContext.onPlay(() => {
 					console.log('1')
@@ -147,6 +122,7 @@
 				
 			},
 			getLastSong() {
+				console.log('1')
 				if (this.id = 1)
 					return
 				var e = this.musicList[this.id]
@@ -157,7 +133,7 @@
 				innerAudioContext.src = e.src
 				this.endTime = innerAudioContext.duration
 				innerAudioContext.onPlay(() => {
-					console.log('1')
+					
 				})
 			},
 			getNextSong() {
