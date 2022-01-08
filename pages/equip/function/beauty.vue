@@ -40,7 +40,7 @@
 				radiolist1: [{
 						name: '正红',
 						disabled: false,
-						color:'#ff0000'
+						color:'#CF2CB5'
 					},
 					{
 						name: '大红',
@@ -121,9 +121,11 @@
 					//console.log(dataURL);
 					faceBase64 = dataURL.split(",")[1];
 					beauty(faceBase64, radiocolor).then(res => {
-						if (res.data.code === 200) {
-							this.result = "data:image/jpg;base64," + btoa(new Uint8Array(res.data).reduce((res, byte) => res + String.fromCharCode(byte), ''));
-							showResult = true;
+						console.log(res)
+						if (res.status === 200) {
+							let image = res.data.makeup_image;
+							this.result = "data:image/png;base64," + image;
+							this.showResult = true;
 						} else {
 							uni.showModal({
 								content: res.data.msg,

@@ -12,9 +12,7 @@
 		
 		<view v-show=showResult style="width: 100%;text-align: center;margin-top: 30rpx;">
 			<text style="font-size: 40rpx;font-weight: 600;">结果分析</text>
-			<u--image :src=result width="100%" style="margin-left: 5%;margin-right: 5%;margin-top: 50rpx;" mode="widthFix">
-				<view slot="error" style="font-size: 24rpx;">加载失败</view>
-			</u--image>
+			<text>{{}}</text>
 		</view>
 		
 		<u-button style="width: 60%;border-radius: 50px;margin-top: 40rpx;" text="拍照" color="#3fd1ad" @click="chooseImage()">
@@ -92,6 +90,7 @@
 					faceBase64 = dataURL.split(",")[1];
 					//console.log(faceBase64);
 					getEmotion(faceBase64).then(res => {
+						console.log(res)
 						if (res.data.code === 200) {
 							this.result = "data:image/jpg;base64," + btoa(new Uint8Array(res.data).reduce((res, byte) => res + String.fromCharCode(byte), ''));
 							showResult = true;

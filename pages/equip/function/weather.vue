@@ -41,30 +41,29 @@
 			</div>
 
 		</div>
-		<div class="guides" v-for="{item,index} in future" key="index">
-			<!--    <image></image>-->
+		<div class="guides" v-for="(item,index) in future" key="index">
 			<div style="width: 100%;">
 				<div style="width: 95%;">
 					
-					<img v-if="future.weather==='晴'" src="static/weather/晴.png" style="float: right;" />
-					<img v-if="future.weather===('阴'||'阴转小雨')" src="static/weather/阴.png" style="float: right;height:365rpx ;" />
-					<img v-if="future.weather==='多云'" src="static/weather/多云.png" />
-					<img v-if="future.weather==='小雨'" src="static/weather/小雨.png" />
-					<img v-if="future.weather==='中雨'" src="static/weather/中雨.png" />
-					<img v-if="future.weather==='大雨'" src="static/weather/大雨.png" />
+					<img v-if="item.weather==='晴'" src="static/weather/晴.png" style="float: right;" />
+					<img v-if="item.weather===('阴'||'阴转小雨')" src="static/weather/阴.png" style="float: right;height:365rpx ;" />
+					<img v-if="item.weather==='多云'" src="static/weather/多云.png" />
+					<img v-if="item.weather==='小雨'" src="static/weather/小雨.png" />
+					<img v-if="item.weather==='中雨'" src="static/weather/中雨.png" />
+					<img v-if="item.weather==='大雨'" src="static/weather/大雨.png" />
 				</div>
 		
 				<div style=" margin-left:100rpx;color: cornflowerblue;height: 0rpx;margin-top: 50rpx;height: 100rpx;">
-					<text style="float: left;font-size: 150rpx;">{{future.temperature}}</text>
+					<text style="float: left;font-size: 150rpx;">{{item.temperature}}</text>
 					<div style="float: left;margin-top: 50rpx;">
 						<span style="margin-left: 10rpx;margin-bottom:;">℃</span>
-						<div style=" margin-left:10rpx;color: cornflowerblue">{{future.weather}}</div>
+						<div style=" margin-left:10rpx;color: cornflowerblue">{{item.weather}}</div>
 					</div><br>
 				</div>
 				<br>
 				<div style="float: left; margin-left:100rpx;color: cornflowerblue;font-size: 35rpx;height: 70rpx;">
-					<div style="float: left;">{{future.direct}}</div>
-					<div style="float: left;margin-left: 20rpx;">{{future.power}}</div>
+					<div style="float: left;">{{item.direct}}</div>
+
 					
 				</div>
 		
@@ -95,7 +94,15 @@
 					aqi:32,
 					
 				},
-				future:[],
+				future:[
+					{
+						weather:'晴',
+						date:'2021.12.23',
+						direct:'东风',
+						temperature:5,
+						wid:{day:6,night:3},
+					}
+				],
 				city: "上海"
 			}
 		},
@@ -103,9 +110,11 @@
 			GetWeatherData() {
 				getWeather().then(response => {
 					console.log(response.data.result)
+		
 					this.isResponse=true;
 					this.realtime = response.data.result.realtime;
-					this.future = response.data.result.future;
+					//this.future = response.data.result.future;
+					console.log(this.future)
 					for (let i = 0; i < 5; i++) {
 						let Length = response.data.result.future[i].date.length;
 						response.data.result.future[i].date = response.data.result.future[i].date.substring(0,

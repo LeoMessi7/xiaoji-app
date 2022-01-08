@@ -2,17 +2,17 @@ import request from '../request.js'
 
 export function beauty(image, type) {
   return request({
-    url: '/makeuppstick',
+    url: '/makeup/lipstick',
     method: 'post',
-	params: {faceBase64: image, type: type}
+	data: {faceBase64: image, type: type}
   })
 }
 
 export function getEmotion(image) {
   return request({
-    url: '/emotion/emotion/get',
+    url: '/emotion/get',
     method: 'post',
-	params: {faceBase64: image}
+	data: {faceBase64: image}
   })
 }
 
