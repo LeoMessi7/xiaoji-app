@@ -1,235 +1,149 @@
-export const recommendList = [
-	{
+export const recommendList = [{
 		moodType: '惊讶',
 		musicList: [{
 			id: '1',
-			name: '惊讶',
-			singer: '贝多芬',
-			src: 'http://music.163.com/song/media/outer/url?id=1387574419.mp3',
-		},{
+			name: '夏の癒し曲',
+			singer: 'AlexBadss',
+			src: 'http://music.163.com/song/media/outer/url?id=1324453694.mp3',
+		}, {
 			id: '2',
-			name: '月光の雲海',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071727/4a09ac1c230b14911b945449dd0302a1/KGTX/CLTX001/3767cd187b64b8dcf9841915b6f0256c.mp3',
-		},{
+			name: '无尽',
+			singer: '清生',
+			src: 'http://music.163.com/song/media/outer/url?id=1889838166.mp3',
+		}, {
 			id: '3',
-			name: 'Summer ',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071729/fd150154ea349ee2950438c9f2a183a4/KGTX/CLTX001/654ca7d7d4abab8a85cd23523a5e693d.mp3',
-		},{
-			id: '4',
-			name: 'あの夏へ',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071727/60a15126d200ceab629ebf1dcb6adaef/KGTX/CLTX001/100e772a8a7a988993f228332a43a285.mp3',
-		}, {
-			id: '5',
-			name: '千百度',
-			singer: '许嵩',
-			src: 'https://sharefs.ali.kugou.com/202201071705/43a469e37a93e6959da8c3d536058b2c/KGTX/CLTX001/fe75c71646819dc6508922dee8eb8ad6.mp3',
-		}, {
-			id: '6',
-			name: '成都',
-			singer: '赵磊',
-			src: 'https://sharefs.ali.kugou.com/202201071709/9c0265f2869edcdfefff731026ffcd85/KGTX/CLTX001/a06b033b356bfc974c5245d0195086a5.mp3'
+			name: 'Promise ',
+			singer: '山岡晃',
+			src: 'http://music.163.com/song/media/outer/url?id=18861490.mp3',
 		}]
 	},
 	{
 		moodType: '生气',
 		musicList: [{
 			id: '1',
-			name: '生气',
-			singer: '生气',
-			src: 'http://music.163.com/song/media/outer/url?id=1387574419.mp3',
-		},{
+			name: '孤独患者',
+			singer: '陈奕迅',
+			src: 'http://music.163.com/song/media/outer/url?id=64093.mp3',
+		}, {
 			id: '2',
-			name: '月光の雲海',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071727/4a09ac1c230b14911b945449dd0302a1/KGTX/CLTX001/3767cd187b64b8dcf9841915b6f0256c.mp3',
-		},{
+			name: 'Historiette #5',
+			singer: 'Fabrizio Paterlini',
+			src: 'http://music.163.com/song/media/outer/url?id=446509000.mp3',
+		}, {
 			id: '3',
-			name: 'Summer ',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071729/fd150154ea349ee2950438c9f2a183a4/KGTX/CLTX001/654ca7d7d4abab8a85cd23523a5e693d.mp3',
-		},{
+			name: '深秋的雨',
+			singer: 'N.K杨凯',
+			src: 'http://music.163.com/song/media/outer/url?id=1397464399.mp3',
+		}, {
 			id: '4',
-			name: 'あの夏へ',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071727/60a15126d200ceab629ebf1dcb6adaef/KGTX/CLTX001/100e772a8a7a988993f228332a43a285.mp3',
-		}, {
-			id: '5',
-			name: '千百度',
-			singer: '许嵩',
-			src: 'https://sharefs.ali.kugou.com/202201071705/43a469e37a93e6959da8c3d536058b2c/KGTX/CLTX001/fe75c71646819dc6508922dee8eb8ad6.mp3',
-		}, {
-			id: '6',
-			name: '成都',
-			singer: '赵磊',
-			src: 'https://sharefs.ali.kugou.com/202201071709/9c0265f2869edcdfefff731026ffcd85/KGTX/CLTX001/a06b033b356bfc974c5245d0195086a5.mp3'
+			name: '見守るまなざし',
+			singer: '三澤康広',
+			src: 'http://music.163.com/song/media/outer/url?id=571854542.mp3',
 		}]
-	},	{
+	}, {
 		moodType: '喜悦',
 		musicList: [{
 			id: '1',
-			name: '喜悦',
-			singer: '贝多芬',
-			src: 'http://music.163.com/song/media/outer/url?id=1387574419.mp3',
-		},{
+			name: 'Summer',
+			singer: '久石譲',
+			src: 'http://music.163.com/song/media/outer/url?id=1867107328.mp3',
+		}, {
 			id: '2',
-			name: '月光の雲海',
+			name: '風のとおり道',
 			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071727/4a09ac1c230b14911b945449dd0302a1/KGTX/CLTX001/3767cd187b64b8dcf9841915b6f0256c.mp3',
-		},{
+			src: 'http://music.163.com/song/media/outer/url?id=4879345.mp3',
+		}, {
 			id: '3',
-			name: 'Summer ',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071729/fd150154ea349ee2950438c9f2a183a4/KGTX/CLTX001/654ca7d7d4abab8a85cd23523a5e693d.mp3',
-		},{
+			name: 'Go Shopping',
+			singer: 'Gypsy Jazz Caravan',
+			src: 'http://music.163.com/song/media/outer/url?id=1435558964.mp3',
+		}, {
 			id: '4',
-			name: 'あの夏へ',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071727/60a15126d200ceab629ebf1dcb6adaef/KGTX/CLTX001/100e772a8a7a988993f228332a43a285.mp3',
-		}, {
-			id: '5',
-			name: '千百度',
-			singer: '许嵩',
-			src: 'https://sharefs.ali.kugou.com/202201071705/43a469e37a93e6959da8c3d536058b2c/KGTX/CLTX001/fe75c71646819dc6508922dee8eb8ad6.mp3',
-		}, {
-			id: '6',
-			name: '成都',
-			singer: '赵磊',
-			src: 'https://sharefs.ali.kugou.com/202201071709/9c0265f2869edcdfefff731026ffcd85/KGTX/CLTX001/a06b033b356bfc974c5245d0195086a5.mp3'
+			name: '阳光下的棕榈树',
+			singer: 'Stefano',
+			src: 'http://music.163.com/song/media/outer/url?id=40021474.mp3',
 		}]
-	},	{
+	}, {
 		moodType: '中性',
 		musicList: [{
 			id: '1',
-			name: '中性',
-			singer: '贝多芬',
-			src: 'http://music.163.com/song/media/outer/url?id=1387574419.mp3',
-		},{
+			name: '风的小径',
+			singer: '万能日记',
+			src: 'http://music.163.com/song/media/outer/url?id=1455273374.mp3',
+		}, {
 			id: '2',
-			name: '月光の雲海',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071727/4a09ac1c230b14911b945449dd0302a1/KGTX/CLTX001/3767cd187b64b8dcf9841915b6f0256c.mp3',
-		},{
+			name: '卡农（经典钢琴版）',
+			singer: 'dylanf',
+			src: 'http://music.163.com/song/media/outer/url?id=478507889.mp3',
+		}, {
 			id: '3',
-			name: 'Summer ',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071729/fd150154ea349ee2950438c9f2a183a4/KGTX/CLTX001/654ca7d7d4abab8a85cd23523a5e693d.mp3',
-		},{
-			id: '4',
-			name: 'あの夏へ',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071727/60a15126d200ceab629ebf1dcb6adaef/KGTX/CLTX001/100e772a8a7a988993f228332a43a285.mp3',
-		}, {
-			id: '5',
-			name: '千百度',
-			singer: '许嵩',
-			src: 'https://sharefs.ali.kugou.com/202201071705/43a469e37a93e6959da8c3d536058b2c/KGTX/CLTX001/fe75c71646819dc6508922dee8eb8ad6.mp3',
-		}, {
-			id: '6',
-			name: '成都',
-			singer: '赵磊',
-			src: 'https://sharefs.ali.kugou.com/202201071709/9c0265f2869edcdfefff731026ffcd85/KGTX/CLTX001/a06b033b356bfc974c5245d0195086a5.mp3'
+			name: '晴れ 時どき 雪 ',
+			singer: 'DEPAPEPE',
+			src: 'http://music.163.com/song/media/outer/url?id=709386.mp3',
 		}]
-	},	{
+	}, {
 		moodType: '伤心',
 		musicList: [{
 			id: '1',
-			name: '伤心',
-			singer: '贝多芬',
-			src: 'http://music.163.com/song/media/outer/url?id=1387574419.mp3',
-		},{
+			name: 'the rain',
+			singer: '久石譲',
+			src: 'http://music.163.com/song/media/outer/url?id=421639623.mp3',
+		}, {
 			id: '2',
-			name: '月光の雲海',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071727/4a09ac1c230b14911b945449dd0302a1/KGTX/CLTX001/3767cd187b64b8dcf9841915b6f0256c.mp3',
-		},{
-			id: '3',
-			name: 'Summer ',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071729/fd150154ea349ee2950438c9f2a183a4/KGTX/CLTX001/654ca7d7d4abab8a85cd23523a5e693d.mp3',
-		},{
-			id: '4',
 			name: 'あの夏へ',
 			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071727/60a15126d200ceab629ebf1dcb6adaef/KGTX/CLTX001/100e772a8a7a988993f228332a43a285.mp3',
+			src: 'http://music.163.com/song/media/outer/url?id=443794.mp3',
 		}, {
-			id: '5',
-			name: '千百度',
-			singer: '许嵩',
-			src: 'https://sharefs.ali.kugou.com/202201071705/43a469e37a93e6959da8c3d536058b2c/KGTX/CLTX001/fe75c71646819dc6508922dee8eb8ad6.mp3',
+			id: '3',
+			name: '夏の癒し曲',
+			singer: 'AlexBadss',
+			src: 'http://music.163.com/song/media/outer/url?id=1324453694.mp3',
 		}, {
-			id: '6',
-			name: '成都',
-			singer: '赵磊',
-			src: 'https://sharefs.ali.kugou.com/202201071709/9c0265f2869edcdfefff731026ffcd85/KGTX/CLTX001/a06b033b356bfc974c5245d0195086a5.mp3'
+			id: '4',
+			name: 'MELANCHOLY',
+			singer: 'White Cherry',
+			src: 'http://music.163.com/song/media/outer/url?id=1297742167.mp3',
 		}]
-	},	{
+	}, {
 		moodType: '厌恶',
 		musicList: [{
 			id: '1',
-			name: '厌恶',
-			singer: '贝多芬',
-			src: 'http://music.163.com/song/media/outer/url?id=1387574419.mp3',
-		},{
+			name: '孤独患者',
+			singer: '陈奕迅',
+			src: 'http://music.163.com/song/media/outer/url?id=64093.mp3',
+		}, {
 			id: '2',
-			name: '月光の雲海',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071727/4a09ac1c230b14911b945449dd0302a1/KGTX/CLTX001/3767cd187b64b8dcf9841915b6f0256c.mp3',
-		},{
+			name: 'Historiette #5',
+			singer: 'Fabrizio Paterlini',
+			src: 'http://music.163.com/song/media/outer/url?id=446509000.mp3',
+		}, {
 			id: '3',
-			name: 'Summer ',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071729/fd150154ea349ee2950438c9f2a183a4/KGTX/CLTX001/654ca7d7d4abab8a85cd23523a5e693d.mp3',
-		},{
+			name: '深秋的雨',
+			singer: 'N.K杨凯',
+			src: 'http://music.163.com/song/media/outer/url?id=1397464399.mp3',
+		}, {
 			id: '4',
-			name: 'あの夏へ',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071727/60a15126d200ceab629ebf1dcb6adaef/KGTX/CLTX001/100e772a8a7a988993f228332a43a285.mp3',
-		}, {
-			id: '5',
-			name: '千百度',
-			singer: '许嵩',
-			src: 'https://sharefs.ali.kugou.com/202201071705/43a469e37a93e6959da8c3d536058b2c/KGTX/CLTX001/fe75c71646819dc6508922dee8eb8ad6.mp3',
-		}, {
-			id: '6',
-			name: '成都',
-			singer: '赵磊',
-			src: 'https://sharefs.ali.kugou.com/202201071709/9c0265f2869edcdfefff731026ffcd85/KGTX/CLTX001/a06b033b356bfc974c5245d0195086a5.mp3'
+			name: '見守るまなざし',
+			singer: '三澤康広',
+			src: 'http://music.163.com/song/media/outer/url?id=571854542.mp3',
 		}]
-	},	{
+	}, {
 		moodType: '恐惧',
 		musicList: [{
 			id: '1',
-			name: '恐惧',
-			singer: '贝多芬',
-			src: 'http://music.163.com/song/media/outer/url?id=1387574419.mp3',
-		},{
+			name: '夏の癒し曲',
+			singer: 'AlexBadss',
+			src: 'http://music.163.com/song/media/outer/url?id=1324453694.mp3',
+		}, {
 			id: '2',
-			name: '月光の雲海',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071727/4a09ac1c230b14911b945449dd0302a1/KGTX/CLTX001/3767cd187b64b8dcf9841915b6f0256c.mp3',
-		},{
+			name: '无尽',
+			singer: '清生',
+			src: 'http://music.163.com/song/media/outer/url?id=1889838166.mp3',
+		}, {
 			id: '3',
-			name: 'Summer ',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071729/fd150154ea349ee2950438c9f2a183a4/KGTX/CLTX001/654ca7d7d4abab8a85cd23523a5e693d.mp3',
-		},{
-			id: '4',
-			name: 'あの夏へ',
-			singer: '久石譲',
-			src: 'https://sharefs.ali.kugou.com/202201071727/60a15126d200ceab629ebf1dcb6adaef/KGTX/CLTX001/100e772a8a7a988993f228332a43a285.mp3',
-		}, {
-			id: '5',
-			name: '千百度',
-			singer: '许嵩',
-			src: 'https://sharefs.ali.kugou.com/202201071705/43a469e37a93e6959da8c3d536058b2c/KGTX/CLTX001/fe75c71646819dc6508922dee8eb8ad6.mp3',
-		}, {
-			id: '6',
-			name: '成都',
-			singer: '赵磊',
-			src: 'https://sharefs.ali.kugou.com/202201071709/9c0265f2869edcdfefff731026ffcd85/KGTX/CLTX001/a06b033b356bfc974c5245d0195086a5.mp3'
+			name: 'Promise ',
+			singer: '山岡晃',
+			src: 'http://music.163.com/song/media/outer/url?id=18861490.mp3',
 		}]
 	},
 ]
