@@ -2,7 +2,7 @@ import request from '../request.js'
 
 export function getDeviceList() {
   return request({
-    url: '/device/list',
+    url: '/device/relation/list',
     method: 'get'
   })
 }
