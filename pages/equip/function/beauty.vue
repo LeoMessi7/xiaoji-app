@@ -38,23 +38,31 @@
 		data() {
 			return {
 				radiolist1: [{
-						name: '正红',
+						name: '紫色',
 						disabled: false,
 						color:'#CF2CB5'
 					},
 					{
-						name: '大红',
+						name: '蜜桃色',
 						disabled: false,
-						color:'#ff300c'
+						color:'#C93C66'
 					},
 					{
-						name: '橘红',
+						name: '红色',
 						disabled: false,
-						color:'#ff6011'
+						color:'#C10532'
 					}, {
-						name: '蜜桃',
+						name: '咖啡色',
 						disabled: false,
-						color:'#ff79a1'
+						color:'#72122F'
+					}, {
+						name: '蓝色',
+						disabled: false,
+						color:'#135F89'
+					}, {
+						name: '橘色',
+						disabled: false,
+						color:'#E06959'
 					}
 				],
 				// u-radio-group的v-model绑定的值如果设置为某个radio的name，就会被默认选中
@@ -96,6 +104,7 @@
 				// }
 			},
 			chooseImage(){
+				this.showResult = false;
 				uni.chooseImage({
 				  	count: 1,
 				    sizeType: ['original', 'compressed'],
@@ -111,7 +120,7 @@
 				let radiocolor;
 				let faceBase64;
 				let list = this.radiolist1;
-				for (var i = 0; i < 4; i++) {
+				for (var i = 0; i < 6; i++) {
 					if (list[i].name === this.radiovalue1) {
 						radiocolor = list[i].color;
 					}
@@ -123,12 +132,20 @@
 					beauty(faceBase64, radiocolor).then(res => {
 						console.log(res)
 						if (res.status === 200) {
-							let image = res.data.makeup_image;
-							this.result = "data:image/png;base64," + image;
-							this.showResult = true;
+							console.log(res.data.error_message)
+							if (res.data.error_message === "NO_FACE_FOUND") {
+								uni.showModal({
+									content: '未检测到人脸',
+									showCancel: false
+								});
+							} else {
+								let image = res.data.makeup_image;
+								this.result = "data:image/png;base64," + image;
+								this.showResult = true;
+							}
 						} else {
 							uni.showModal({
-								content: res.data.msg,
+								content: '网络异常',
 								showCancel: false
 							});
 						}						   

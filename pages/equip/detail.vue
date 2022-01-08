@@ -4,31 +4,21 @@
 			:current="currentTabIndex" lineWidth="50">
 		</u-tabs>
 		<div v-if="currentTabIndex===0" class="equip">
-			<div class="form">
-				<u--form style="margin: auto;" labelPosition="left" :label-style="{'font-size':'35rpx'}" :model="Info"
-					:rules="rules" ref="Info">
-					<u-form-item label="名称" prop="Info.name" border:none ref="Info">
-						<u--input placeholder="请输入内容" border="bottom" clearable></u--input>
-					</u-form-item>
-					<u-form-item label="备注" prop="Info.rename" border:none ref="Info">
-						<u--input placeholder="请输入内容" border="bottom" clearable></u--input>
-					</u-form-item>
-				</u--form>
-			</div>
 			<div class="detail">
-				<ul>
-					<li><span>设备编号：</span>{{Info.id}}</li>
-					<li><span>设备分类：</span>{{Info.category}}</li>
-					<li><span>固件版本：</span>{{Info.edition}}</li>
-					<li><span>创建时间：</span>{{Info.createTime}}</li>
+				<ul>					
+					<text style="float:left;margin-top:30rpx;height:20rpx;margin-right:50rpx;font-size:32rpx;font-weight:450;color:#000000x;">设备名称:</text>
+					<text style="float:left;margin-top:30rpx;height:20rpx;font-size:32rpx;font-weight:450;color:#000000x;">{{Info.name}}</text><br>
+					<text style="float:left;margin-top:30rpx;height:20rpx;margin-right:50rpx;font-size:32rpx;font-weight:450;color:#000000x;">设备编号:</text>
+					<text style="float:left;margin-top:30rpx;height:20rpx;;font-size:32rpx;font-weight:450;color:#000000x;">{{Info.num}}</text><br>
+					<text style="float:left;margin-top:30rpx;height:20rpx;margin-right:50rpx;font-size:32rpx;font-weight:450;color:#000000x;">设备分类:</text>
+					<text style="float:left;margin-top:30rpx;height:20rpx;font-size:32rpx;font-weight:450;color:#000000x;">{{Info.category}}</text><br>
+					<text style="float:left;margin-top:30rpx;height:20rpx;margin-right:50rpx;font-size:32rpx;font-weight:450;color:#000000x;">固件版本:</text>
+					<text style="float:left;margin-top:30rpx;height:20rpx;font-size:32rpx;font-weight:450;color:#000000x;">{{Info.version}}</text><br>
+					<text style="float:left;margin-top:30rpx;height:20rpx;margin-right:50rpx;font-size:32rpx;font-weight:450;color:#000000x;">创建时间:</text>
+					<text style="float:left;margin-top:30rpx;height:20rpx;font-size:32rpx;font-weight:450;color:#000000x;">{{Info.updateTime}}</text><br>
+					<text style="float:left;margin-top:30rpx;height:20rpx;margin-right:50rpx;font-size:32rpx;font-weight:450;color:#000000x;">备注:</text>
+					<text style="float:left;margin-top:30rpx;height:20rpx;font-size:32rpx;font-weight:450;color:#000000x;">{{Info.remark}}</text><br>
 				</ul>
-			</div>
-			<div class="btn" style="width:80%;margin: auto;margin-top: 50rpx;">
-				<u-button style="width: 32%;float: left;border-radius: 50px;" text="返回" color="#3fd1ad" @click="Back">
-				</u-button>
-				<u-button style="margin-left: 4%; width: 64%;float: left;border-radius: 50px;" text="保存"
-					color="#006dfe">
-				</u-button>
 			</div>
 		</div>
 		<div v-if="currentTabIndex===1" class="state">
@@ -272,15 +262,15 @@
 				currentTabIndex: 0,
 				color: '#3fd1ad',
 				Info: {
-					name: '树莓派1',
-					rename: '第一个',
-					id: '7CDFA1049ADA',
-					category: '树莓派',
-					edition: 'v1.0',
-					state: '离线',
-					key: false,
-					color: 'background-color:#dcdcdc',
-					createTime: '2021-12-20 07:12:23',
+					name: '',
+					remark: '',
+					num: '',
+					category: '',
+					version: '',
+					state: '',
+					key: true,
+					color: '',
+					updateTime: '',
 
 				},
 				lamp: {
@@ -294,28 +284,19 @@
 				btn: {
 					key: false,
 				},
-				rules: {
-					'Info.name': {
-						type: 'string',
-						required: true,
-						message: '请输入名称',
-						trigger: ['blur', 'change']
-					},
-					'Info.rename': {
-						type: 'string',
-						required: false,
-						trigger: ['blur', 'change']
-					},
-				},
 			}
 		},
-		onLoad: function(option) {
+		onLoad(option) {
 			// decodeURIComponent 解密传过来的对象字符串
 			const item = JSON.parse(decodeURIComponent(option.Item));
 			this.Info.color = item.color
 			this.Info.name = item.title
 			this.Info.state = item.state
 			this.Info.key = item.key
+			this.Info.num = item.num
+			this.Info.version = item.version
+			this.Info.updateTime = item.updateTime
+			this.Info.remark = item.remark
 			if (item.color === 'background-color:#dcdcdc')
 				this.color = '#dcdcdc'
 			else
@@ -323,7 +304,7 @@
 			if (item.category === 'pi')
 				this.Info.category = '树莓派'
 			else {
-				this.Info.category = '智能灯'
+				this.Info.category = '智能灯'			
 			}
 		},
 		methods: {
@@ -402,7 +383,7 @@
 			    // wxs 微信小程序连接
 			    // alis 支付宝小程序连接
 			    const { host, port, endpoint, ...options } = connection
-			    const connectUrl = `ws://${host}:${port}${endpoint}`
+			    const connectUrl = 'ws://${host}:${port}${endpoint}'
 			    try {
 			        this.client = mqtt.connect(connectUrl, options)
 			    } catch (error) {
