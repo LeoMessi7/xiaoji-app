@@ -95,6 +95,7 @@
 			this.id = this.musicList[0].id;
 			innerAudioContext.src = this.musicList[0].src
 			this.endTime = innerAudioContext.duration
+			innerAudioContext.pause()
 		},
 		methods: {
 			changeState() {
