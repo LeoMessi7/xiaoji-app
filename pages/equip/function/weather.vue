@@ -1,16 +1,17 @@
 <template>
 	<div class="guide">
-		<div class="title">今日天气</div>
+		<div class="title">小济天气</div>
 		<div class="guides">
 			<!--    <image></image>-->
 			<div style="width: 100%;">
-				<div style="width: 95%;">
-					<img v-if="realtime.info==='晴'" src="static/weather/晴.png" style="float: right;height:365rpx ;" />
-					<img v-if="realtime.info===('阴'||'阴转小雨')" src="static/weather/阴.png" style="float: right;height:365rpx ;" />
-					<img v-if="realtime.info==='多云'" src="static/weather/多云.png" style="float: right;height:365rpx ;"/>
-					<img v-if="realtime.info==='小雨'" src="static/weather/小雨.png" style="float: right;height:365rpx ;"/>
-					<img v-if="realtime.info==='中雨'" src="static/weather/中雨.png" style="float: right;height:365rpx ;"/>
-					<img v-if="realtime.info==='大雨'" src="static/weather/大雨.png" style="float: right;height:365rpx ;"/>
+				<div style="width: 100%;">
+					<img v-if="realtime.info==='晴'||realtime.info==='晴转小雨'||realtime.info==='晴转多云'" src="static/weather/晴.png" style="float: right;height:365rpx ;" />
+					<img v-if="realtime.info==='阴'||realtime.info==='阴转多云'" src="static/weather/阴.png"
+						style="float: right;height:365rpx ;" />
+					<img v-if="realtime.info==='多云'||realtime.info==='多云转晴'||realtime.info==='多云转阴'" src="static/weather/多云.png" style="float: right;height:365rpx ;" />
+					<img v-if="realtime.info==='小雨'" src="static/weather/小雨.png" style="float: right;height:365rpx ;" />
+					<img v-if="realtime.info==='中雨'" src="static/weather/中雨.png" style="float: right;height:365rpx ;" />
+					<img v-if="realtime.info==='大雨'" src="static/weather/大雨.png" style="float: right;height:365rpx ;" />
 				</div>
 
 				<div style=" margin-left:100rpx;color: cornflowerblue;height: 0rpx;margin-top: 50rpx;height: 100rpx;">
@@ -24,55 +25,60 @@
 				<div style="float: left; margin-left:100rpx;color: cornflowerblue;font-size: 35rpx;height: 70rpx;">
 					<div style="float: left;">{{realtime.direct}}</div>
 					<div style="float: left;margin-left: 20rpx;">{{realtime.power}}</div>
-					
+
 				</div>
-				
+
 				<div style="float:left; margin-left:100rpx;color: cornflowerblue;font-size: 40rpx;margin-top: 50rpx;">
 					<div style="float: left;">湿度:</div>
 					<div style="float: left;">{{realtime.humidity}}%</div>
 				</div>
-				<div style="float:left; margin-left:20%;color: cornflowerblue;font-size: 40rpx;">
+				<div style="float:left; margin-left:18%;color: cornflowerblue;font-size: 40rpx;">
 					<div style="float: left;">空气质量:</div>
 					<div style="float: left;">{{realtime.aqi}}</div>
 				</div><br>
 
-				
-				
+
+
 			</div>
 
 		</div>
-		<div class="guides" v-for="(item,index) in future" key="index">
+		<div class="guides1" v-for="(item,index) in future" key="index">
 			<div style="width: 100%;">
 				<div style="width: 95%;">
-					
-					<img v-if="item.weather==='晴'" src="static/weather/晴.png" style="float: right;" />
-					<img v-if="item.weather===('阴'||'阴转小雨')" src="static/weather/阴.png" style="float: right;height:365rpx ;" />
-					<img v-if="item.weather==='多云'" src="static/weather/多云.png" />
-					<img v-if="item.weather==='小雨'" src="static/weather/小雨.png" />
-					<img v-if="item.weather==='中雨'" src="static/weather/中雨.png" />
-					<img v-if="item.weather==='大雨'" src="static/weather/大雨.png" />
+					<img v-if="item.weather==='晴'||item.weather==='晴转多云'||item.weather==='晴转小雨'" src="static/weather/晴.png"
+						style="float: right;height:165rpx ;margin-right: 40rpx;" />
+					<img v-if="item.weather==='阴'||item.weather==='阴转小雨'" src="static/weather/阴.png"
+						style="float: right;height:165rpx ;margin-right: 40rpx;" />
+					<img v-if="item.weather==='多云'||item.weather==='多云转阴'" src="static/weather/多云.png"
+						style="float: right;height:165rpx ;margin-right: 40rpx;" />
+					<img v-if="item.weather==='小雨'||item.weather==='小雨转多云'" src="static/weather/小雨.png"
+						style="float: right;height:165rpx ;margin-right: 40rpx;" />
+					<img v-if="item.weather==='中雨'" src="static/weather/中雨.png"
+						style="float: right;height:165rpx ;margin-right: 40rpx;" />
+					<img v-if="item.weather==='大雨'" src="static/weather/大雨.png"
+						style="float: right;height:165rpx ;margin-right: 40rpx;" />
 				</div>
-		
-				<div style=" margin-left:100rpx;color: cornflowerblue;height: 0rpx;margin-top: 50rpx;height: 100rpx;">
-					<text style="float: left;font-size: 150rpx;">{{item.temperature}}</text>
-					<div style="float: left;margin-top: 50rpx;">
-						<span style="margin-left: 10rpx;margin-bottom:;">℃</span>
-						<div style=" margin-left:10rpx;color: cornflowerblue">{{item.weather}}</div>
-					</div><br>
+
+				<div style=" position: relative;margin-left:60rpx;color: cornflowerblue;height: 180rpx;">
+					<div style="height: 0rpx;width: 100%;"><text style="font-size: 40rpx;">{{item.date}}</text></div>
+					<br>
+					<text style="font-size: 70rpx;">{{item.temperature}}</text>
+					<div style="position: relative;margin-top: 20rpx;width: 80%;">
+						<text style="float: left;margin-left:10rpx;color: cornflowerblue;font-size: 35rpx;">{{item.weather}}</text>
+						<text style="float: right;font-size: 35rpx;">
+							{{item.direct}}
+						</text>
+
+					</div>
 				</div>
 				<br>
-				<div style="float: left; margin-left:100rpx;color: cornflowerblue;font-size: 35rpx;height: 70rpx;">
-					<div style="float: left;">{{item.direct}}</div>
 
-					
-				</div>
-		
-				
-				
+
+
 			</div>
-		
+
 		</div>
-		
+
 	</div>
 </template>
 
@@ -84,25 +90,35 @@
 		name: "WeatherToday",
 		data() {
 			return {
-				isResponse:false,
+				isResponse: false,
 				realtime: {
-					info:'晴',
-					temperature:6,
-					direct:"东风",
-					power:'2级',
-					humidity:40,
-					aqi:32,
-					
+					info: '晴',
+					temperature: 6,
+					direct: "东风",
+					power: '2级',
+					humidity: 40,
+					aqi: 32,
+
 				},
-				future:[
-					{
-						weather:'晴',
-						date:'2021.12.23',
-						direct:'东风',
-						temperature:5,
-						wid:{day:6,night:3},
-					}
-				],
+				future: [{
+					weather: '小雨转多云',
+					date: '2021.12.23',
+					direct: '持续无风向',
+					temperature: '2/8℃',
+					wid: {
+						day: 6,
+						night: 3
+					},
+				}, {
+					weather: '阴转小雨',
+					date: '2021.12.23',
+					direct: '东风',
+					temperature: '2/8℃',
+					wid: {
+						day: 6,
+						night: 3
+					},
+				}],
 				city: "上海"
 			}
 		},
@@ -110,10 +126,10 @@
 			GetWeatherData() {
 				getWeather().then(response => {
 					console.log(response.data.result)
-		
-					this.isResponse=true;
+
+					this.isResponse = true;
 					this.realtime = response.data.result.realtime;
-					//this.future = response.data.result.future;
+					this.future = response.data.result.future;
 					console.log(this.future)
 					for (let i = 0; i < 5; i++) {
 						let Length = response.data.result.future[i].date.length;
@@ -138,7 +154,8 @@
 
 <style scoped>
 	page {
-		background: azure;
+		background: #dedede;
+		padding-bottom: 20rpx;
 	}
 
 	.guide {
@@ -147,7 +164,7 @@
 	}
 
 	.guide .title {
-		border-bottom: 3px solid darkslategrey;
+		border-bottom: 3px solid cornflowerblue;
 		background: azure;
 		font-size: 20px;
 		font-weight: bold;
@@ -157,67 +174,32 @@
 		color: cornflowerblue;
 	}
 
-	.guide .guides {
+	.guides {
 		display: flex;
 		flex-direction: row;
+		width: 90%;
+		margin: auto;
+		margin-top: 30rpx;
+		font-size: 24px;
 
+		background: azure;
+		padding-bottom: 30rpx;
+		border-radius: 16rpx;
+		box-shadow: 10rpx 10rpx 10rpx #888888;
+	}
+
+	.guides1 {
+		display: flex;
+		flex-direction: row;
+		width: 90%;
+		margin: auto;
+		margin-top: 30rpx;
 		font-size: 24px;
 		padding-top: 10px;
+		padding-bottom: 5px;
 		background: azure;
-		border-bottom: 5px solid floralwhite;
-		/*margin-bottom: 20px;*/
-	}
-
-	.jinritianqi {
-		z-index: 2;
-
-		margin-left: 2px;
-
-		margin-top: 2px;
-		/*margin-bottom: 40px;*/
-		font-size: 20px;
-		white-space: nowrap;
-		color: cornflowerblue;
-	}
-
-	.jrtianqi {
-		margin: 20px;
-
-		flex-direction: column;
-
-		color: cornflowerblue;
-	}
-
-	.jrshidu {
-		margin: 20px;
-
-		flex-direction: column;
-
-		color: cornflowerblue;
-	}
-
-	.jrzhiliang {
-		margin: 20px;
-
-		flex-direction: column;
-
-		color: cornflowerblue;
-	}
-
-	.jrfengsu {
-		margin: 20px;
-
-		flex-direction: column;
-
-		color: cornflowerblue;
-	}
-
-	.jrfengli {
-		margin: 20px;
-
-		flex-direction: column;
-
-		color: cornflowerblue;
+		border-radius: 16rpx;
+		box-shadow: 10rpx 10rpx 10rpx #888888;
 	}
 </style>
 <!-- 
