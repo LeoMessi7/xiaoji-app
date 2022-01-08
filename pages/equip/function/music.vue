@@ -17,7 +17,6 @@
 		</view>
 		<div class="boxa1">
 			<view>
-				<span>当前情感：</span>{{moodType}}
 				<u-popup :show="isOpen" mode="bottom" @close="close" @open="open()" :closeOnClickOverlay="true">
 					<view>
 						<ul>

@@ -9,22 +9,21 @@
 				<div class="title">{{Info.name}}</div>
 			</div>
 			<div class="form">
-				<u--form style="margin: auto;" labelPosition="left" :label-style="{'font-size':'35rpx'}" :model="Info"
-					:rules="rules" ref="Info">
+				<u--form style="margin: auto;" labelPosition="left" :label-style="{'font-size':'35rpx'}" :model="Info" ref="Info">
 					<u-form-item label="名称" prop="Info.name" border:none ref="Info">
-						<u--input placeholder="请输入内容" border="bottom" clearable></u--input>
+						<u--input v-model="this.Info.name" placeholder="请输入内容" border="bottom" clearable></u--input>
 					</u-form-item>
 					<u-form-item label="备注" prop="Info.rename" border:none ref="Info">
-						<u--input placeholder="请输入内容" border="bottom" clearable></u--input>
+						<u--input v-model="this.Info.remark" placeholder="请输入内容" border="bottom" clearable></u--input>
 					</u-form-item>
 				</u--form>
 			</div>
 			<div class="detail">
 				<ul>
-					<li><span>设备编号：</span>{{Info.id}}</li>
+					<li><span>设备编号：</span>{{Info.num}}</li>
 					<li><span>设备分类：</span>{{Info.category}}</li>
-					<li><span>固件版本：</span>{{Info.edition}}</li>
-					<li><span>创建时间：</span>{{Info.createTime}}</li>
+					<li><span>固件版本：</span>{{Info.version}}</li>
+					<li><span>创建时间：</span>{{Info.updateTime}}</li>
 				</ul>
 			</div>
 			<div class="btn" style="width:80%;margin: auto;margin-top: 50rpx;">
@@ -406,7 +405,7 @@
 					endpoint,
 					...options
 				} = connection
-				const connectUrl = 'ws://${host}:${port}${endpoint}'
+				const connectUrl = `ws://${host}:${port}${endpoint}`
 				try {
 					this.client = mqtt.connect(connectUrl, options)
 				} catch (error) {

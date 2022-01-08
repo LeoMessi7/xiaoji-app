@@ -119,7 +119,6 @@
 						night: 3
 					},
 				}],
-				city: "上海"
 			}
 		},
 		methods: {
@@ -136,7 +135,6 @@
 						response.data.result.future[i].date = response.data.result.future[i].date.substring(0,
 							Length - 19);
 					}
-					this.$store.commit('setWeather', response.data.result)
 					console.log(this.realtime);
 				}).catch(err => {
 					console.log(err)
@@ -145,9 +143,6 @@
 		},
 		mounted() {
 			this.GetWeatherData();
-			console.log(this.$store.state.wea);
-			// Vue.set(this.realtime,'select',this.$store.state.wea.realtime)
-			this.city = this.$store.state.wea.city
 		}
 	}
 </script>

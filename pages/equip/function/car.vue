@@ -27,7 +27,8 @@
 					<u-button text="连接" @click="createConnection()"
 						style="border-radius: 100rpx;width: 70%;background-color: #beedc7;color: #ffffff;"></u-button>
 					<u-button text="断开连接" @click="disConnection()"
-						style="border-radius: 100rpx;width: 70%;background-color: #f4606c;color: #ffffff;position: relative;margin-top: 40rpx;"></u-button>
+						style="border-radius: 100rpx;width: 70%;background-color: #f4606c;color: #ffffff;position: relative;margin-top: 40rpx;">
+					</u-button>
 
 				</div>
 				<div
@@ -51,27 +52,37 @@
 
 <script>
 	import mqtt from 'mqtt/dist/mqtt.js'
-	import {connection} from '@/utils/mqtt.js'
+	import {
+		connection
+	} from '@/utils/mqtt.js'
 	export default {
 		data() {
 			return {
 				subscription: {
-				    topic: 'test',
-				    qos: 0,
+					topic: 'test',
+					qos: 0,
 				},
 				publish: {
 					topic: 'run',
-				    qos: 0,
-				    payload: '{ "msg": "Hello, YYDS Hello." }',
+					qos: 0,
+					payload: '{ "msg": "Hello, YYDS Hello." }',
 				},
 				receiveNews: '',
-				qosList: [
-				    { label: 0, value: 0 },
-				    { label: 1, value: 1 },
-				    { label: 2, value: 2 },
+				qosList: [{
+						label: 0,
+						value: 0
+					},
+					{
+						label: 1,
+						value: 1
+					},
+					{
+						label: 2,
+						value: 2
+					},
 				],
 				client: {
-				    connected: false,
+					connected: false,
 				},
 				subscribeSuccess: false,
 				color: '#dcdcdc',
@@ -79,9 +90,9 @@
 					state: false
 				},
 				publish: {
-				    topic: 'run',
-				    qos: 0,
-				    payload: '{ "msg": "Hello, YYDS Hello." }',
+					topic: 'run',
+					qos: 0,
+					payload: '{ "msg": "Hello, YYDS Hello." }',
 				},
 				connection: {
 					host: '121.36.229.15',
@@ -123,9 +134,9 @@
 				},
 				subscribeSuccess: false,
 			}
-		
-	},
-	onLoad() {
+
+		},
+		onLoad() {
 
 		},
 		methods: {
@@ -155,8 +166,8 @@
 					console.log('mqtt.connect error', error)
 				}
 				uni.showToast({
-				    title: '连接成功',
-				    duration: 1000
+					title: '连接成功',
+					duration: 1000
 				});
 				this.client.on('connect', () => {
 					console.log('Connection succeeded!')
@@ -275,53 +286,53 @@
 				}
 			},
 			controlCamera(dir) {
-			// 	switch (dir) {
-			// 		case 'up': {
-			// 			console.log(3)
-			// 			const topic = this.publish.topic
-			// 			const qos = this.publish.qos
-			// 			this.client.publish(topic, "3", qos, error => {
-			// 				if (error) {
-			// 					console.log('Publish error', error)
-			// 				}
-			// 			})
-			// 			break
-			// 		}
-			// 		case 'down': {
-			// 			console.log(4)
-			// 			const topic = this.publish.topic
-			// 			const qos = this.publish.qos
-			// 			this.client.publish(topic, "4", qos, error => {
-			// 				if (error) {
-			// 					console.log('Publish error', error)
-			// 				}
-			// 			})
-			// 			break
-			// 		}
-			// 		case 'left': {
-			// 			console.log(1)
-			// 			const topic = this.publish.topic
-			// 			const qos = this.publish.qos
-			// 			this.client.publish(topic, "1", qos, error => {
-			// 				if (error) {
-			// 					console.log('Publish error', error)
-			// 				}
-			// 			})
-			// 			break
-			// 		}
-			// 		case 'right': {
-			// 			console.log(2)
-			// 			const topic = this.publish.topic
-			// 			const qos = this.publish.qos
-			// 			this.client.publish(topic, "2", qos, error => {
-			// 				if (error) {
-			// 					console.log('Publish error', error)
-			// 				}
-			// 			})
-			// 			break
-			// 		}
-			// 	}
-			 },
+				// 	switch (dir) {
+				// 		case 'up': {
+				// 			console.log(3)
+				// 			const topic = this.publish.topic
+				// 			const qos = this.publish.qos
+				// 			this.client.publish(topic, "3", qos, error => {
+				// 				if (error) {
+				// 					console.log('Publish error', error)
+				// 				}
+				// 			})
+				// 			break
+				// 		}
+				// 		case 'down': {
+				// 			console.log(4)
+				// 			const topic = this.publish.topic
+				// 			const qos = this.publish.qos
+				// 			this.client.publish(topic, "4", qos, error => {
+				// 				if (error) {
+				// 					console.log('Publish error', error)
+				// 				}
+				// 			})
+				// 			break
+				// 		}
+				// 		case 'left': {
+				// 			console.log(1)
+				// 			const topic = this.publish.topic
+				// 			const qos = this.publish.qos
+				// 			this.client.publish(topic, "1", qos, error => {
+				// 				if (error) {
+				// 					console.log('Publish error', error)
+				// 				}
+				// 			})
+				// 			break
+				// 		}
+				// 		case 'right': {
+				// 			console.log(2)
+				// 			const topic = this.publish.topic
+				// 			const qos = this.publish.qos
+				// 			this.client.publish(topic, "2", qos, error => {
+				// 				if (error) {
+				// 					console.log('Publish error', error)
+				// 				}
+				// 			})
+				// 			break
+				// 		}
+				// 	}
+			},
 			stop() {
 				// const { topic, qos, payload } = this.publish
 				const topic = this.publish.topic
@@ -334,17 +345,17 @@
 				})
 			},
 			disConnection() {
-			    if (this.client.connected) {
-			        try {
+				if (this.client.connected) {
+					try {
 						this.client.end()
 						this.client = {
 							connected: false,
 						}
-							console.log('Successfully disconnected!')
-			        } catch (error) {
+						console.log('Successfully disconnected!')
+					} catch (error) {
 						console.log('Disconnect failed', error.toString())
-			        }
-			    }
+					}
+				}
 			},
 		}
 	}
