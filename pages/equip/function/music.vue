@@ -1,6 +1,6 @@
 <template>
 	<view style="background-color: #FFFFFF;height: 100%;">
-		<div class="box" >
+		<div class="box">
 			<image :class="this.key?'tag':'tag1'" src="../../../static/music/player_bar.png" mode:widthFix><br>
 			</image>
 			<image src="../../../static/music/disc.png"
@@ -10,7 +10,7 @@
 				<text style="font-weight: 600;font-size: 50rpx;margin-top: 100rpx;">{{name }}<br><span
 						style="font-weight: 500;font-size: 35rpx;">{{singer}}</span></text>
 			</div>
-			
+
 		</div>
 		<view style="width: 80%;height: 100rpx;margin: auto;">
 			<text style="float: left;font-weight: 600;color:#585858;margin-top: 80rpx;">当前心情：{{moodType}}</text>
@@ -75,6 +75,7 @@
 		},
 		onLoad() {
 			let moodNum = Math.round(Math.random() * 6);
+			let mood = moodNum
 			console.log(moodNum)
 			uni.getStorage({
 				key: "moodNum",
@@ -84,7 +85,9 @@
 				}
 			})
 			console.log(moodNum)
-			this.moodType = recommendList[moodNum].moodType
+			if (mood !== moodNum) {
+				this.moodType = recommendList[moodNum].moodType
+			}
 			this.musicList = recommendList[moodNum].musicList
 			console.log(this.moodType)
 			this.name = this.musicList[0].name;
