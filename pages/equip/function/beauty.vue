@@ -59,7 +59,11 @@
 				show: false,
 				radiolist1: [{
 <<<<<<< HEAD
+<<<<<<< HEAD
 						name: '紫色',
+=======
+						name: '紫罗兰',
+>>>>>>> 720fd44e88fb20bc9c24a5cbf7cfd4b52a7eb9b7
 =======
 						name: '紫罗兰',
 >>>>>>> 720fd44e88fb20bc9c24a5cbf7cfd4b52a7eb9b7
@@ -69,6 +73,7 @@
 					{
 						name: '蜜桃色',
 						disabled: false,
+<<<<<<< HEAD
 <<<<<<< HEAD
 						color:'#C93C66'
 =======
@@ -93,6 +98,26 @@
 						disabled: false,
 						color:'#E06959'
 =======
+						color: '#C10532'
+					}, {
+						name: '咖啡色',
+						disabled: false,
+						color: '#72122F'
+					}, {
+						name: '宝石蓝',
+						disabled: false,
+						color: '#135F89'
+					}, {
+						name: '橘色',
+						disabled: false,
+						color: '#E06959'
+>>>>>>> 720fd44e88fb20bc9c24a5cbf7cfd4b52a7eb9b7
+=======
+						color: '#C93C66'
+					},
+					{
+						name: '红色',
+						disabled: false,
 						color: '#C10532'
 					}, {
 						name: '咖啡色',
@@ -184,7 +209,11 @@
 				// }
 			},
 <<<<<<< HEAD
+<<<<<<< HEAD
 			chooseImage(){
+=======
+			chooseImage() {
+>>>>>>> 720fd44e88fb20bc9c24a5cbf7cfd4b52a7eb9b7
 =======
 			chooseImage() {
 >>>>>>> 720fd44e88fb20bc9c24a5cbf7cfd4b52a7eb9b7

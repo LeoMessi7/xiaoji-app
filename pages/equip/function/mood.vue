@@ -42,7 +42,10 @@
 				blob: '',
 				showResult: false,
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 720fd44e88fb20bc9c24a5cbf7cfd4b52a7eb9b7
 				result: '',
 				chartData: {
 					categories: [],
@@ -52,6 +55,9 @@
 				},
 
 
+<<<<<<< HEAD
+>>>>>>> 720fd44e88fb20bc9c24a5cbf7cfd4b52a7eb9b7
+=======
 >>>>>>> 720fd44e88fb20bc9c24a5cbf7cfd4b52a7eb9b7
 			}
 		},
@@ -80,8 +86,12 @@
 
 			},
 <<<<<<< HEAD
+<<<<<<< HEAD
 			chooseImage(){
 				this.showResult = false;
+=======
+			chooseImage() {
+>>>>>>> 720fd44e88fb20bc9c24a5cbf7cfd4b52a7eb9b7
 =======
 			chooseImage() {
 >>>>>>> 720fd44e88fb20bc9c24a5cbf7cfd4b52a7eb9b7
@@ -105,6 +115,7 @@
 
 					getEmotion(faceBase64).then(res => {
 <<<<<<< HEAD
+<<<<<<< HEAD
 						console.log(res)
 						if (res.status === 200) {
 							if (res.data === "") {
@@ -116,6 +127,51 @@
 								this.showResult = true;
 							}					
 						} else {
+=======
+						if (res.status === 200) {
+							this.chartData.series[0].data = []
+							if (res.data === ''){
+								uni.showModal({
+									content: '未检测到人脸',
+									showCancel: false
+								})
+							}
+							for (let i = 0; i < 7; i++) {
+								let item = {}
+								if (i === 0) {
+									item.name = '惊讶'
+									item.value = res.data.surprise
+								}
+								if (i === 1) {
+									item.name = '生气'
+									item.value = res.data.anger
+								}
+								if (i === 2) {
+									item.name = '喜悦'
+									item.value = res.data.happiness
+								}
+								if (i === 3) {
+									item.name = '中性'
+									item.value = res.data.neutral
+								}
+								if (i === 4) {
+									item.name = '伤心'
+									item.value = res.data.sadness
+								}
+								if (i === 5) {
+									item.name = '厌恶'
+									item.value = res.data.disgust
+								}
+								if (i === 6) {
+									item.name = '恐惧'
+									item.value = res.data.fear
+								}
+								this.chartData.series[0].data.push(item)
+							}
+							this.showResult = true;
+						} else {
+
+>>>>>>> 720fd44e88fb20bc9c24a5cbf7cfd4b52a7eb9b7
 =======
 						if (res.status === 200) {
 							this.chartData.series[0].data = []
