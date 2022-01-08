@@ -13,8 +13,7 @@
 				<view style="width: 100%;">
 					<u-avatar src="my.png" shape="circle" size="70"
 						style="margin-top: 30rpx;margin-left: 40rpx;float: left;"></u-avatar>
-					<text 
-						style="float: left;margin-left: 20rpx;margin-top: 70rpx;height: 100rpx;margin-right: 200rpx;font-size: 40rpx;font-weight: 600;color: #fff;"></span>{{name}}</li></text>
+					<text style="float: left;margin-left: 20rpx;margin-top: 70rpx;height: 100rpx;margin-right: 200rpx;font-size: 40rpx;font-weight: 600;color: #fff;"></span>{{name}}</li></text>
 				</view>
 				<text style="margin-left: 40rpx;color: #fff;">小济智能点亮智慧生活...</text>
 			</view>
@@ -115,6 +114,10 @@
 						title: '树莓派小车',
 						state: '在线',
 						key: true,
+						num: "7CDFA1049ADA",
+						version: 'v1.0',
+						updateTime: "2021-12-20 07:12:13",
+						remark: "我的树莓派",
 						color: 'background-color:#3fd1ad',
 					}
 				]
@@ -143,9 +146,15 @@
 					let item = res.data.rows;
 					let length = res.data.total;
 					for (let i = 0; i < length; i++) {
+						var time = item[i].gmtUpdate.split(".")[0];
+						console.log(time)
 					    this.itemList.push({
 					        category : "lamp",
-					        title : item[i].deviceName,
+							num: item[i].deviceNum,
+							remark: item[i].remark===null?"暂无备注":item[i].remark,
+							updateTime: time.split("T")[0] + " " + time.split("T")[1],
+					        version: "未知",
+							title : item[i].deviceName,
 					        state : '离线',
 					        key : false,
 					        color : 'background-color:#dcdcdc',
@@ -181,6 +190,7 @@
 			},
 			toDetail(item) {
 				let Item = encodeURIComponent(JSON.stringify(item))
+				console.log(item)
 				uni.navigateTo({
 					url: '/pages/equip/detail?Item=' + Item
 				})

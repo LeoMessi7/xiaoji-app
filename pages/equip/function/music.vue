@@ -123,9 +123,9 @@
 			},
 			getLastSong() {
 				console.log('1')
-				if (this.id = 1)
+				if (this.id <= 1)
 					return
-				var e = this.musicList[this.id]
+				var e = this.musicList[this.id-2]
 				this.key = false;
 				this.name = e.name;
 				this.singer = e.singer;
