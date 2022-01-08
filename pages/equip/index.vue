@@ -13,7 +13,7 @@
 				<view style="width: 100%;">
 					<u-avatar src="my.png" shape="circle" size="70"
 						style="margin-top: 30rpx;margin-left: 40rpx;float: left;"></u-avatar>
-					<text style="float: left;margin-left: 20rpx;margin-top: 70rpx;height: 100rpx;margin-right: 200rpx;font-size: 40rpx;font-weight: 600;color: #fff;"></span>{{name}}</li></text>
+					<text style="float: left;margin-left: 20rpx;margin-top: 70rpx;height: 100rpx;margin-right: 200rpx;font-size: 40rpx;font-weight: 600;color: #fff;">{{name}}</li></text>
 				</view>
 				<text style="margin-left: 40rpx;color: #fff;">小济智能点亮智慧生活...</text>
 			</view>
@@ -93,7 +93,7 @@
 	export default {
 		data() {
 			return {
-				name: "匿名用户",
+				name: '匿名用户',
 				bgcolor: '#fff',
 				show: false,
 				list1: [{
@@ -123,10 +123,17 @@
 				]
 			}
 		},
-		mounted() {
-			this.name = this.$store.state.user.nickname;
-			console.log(this.$store.state.user)
-			
+		onLoad() {
+			let name = ''
+			uni.getStorage({
+				key: "user",
+				success(res){
+					console.log(res.data)
+					name = res.data.nickname
+					console.log(name)
+				}
+			})
+			this.name = name
 			// getUserName().then(res => {
 			// 	if (res.data.code === 200) {
 			// 		console.log(res.data.object);

@@ -17,6 +17,7 @@
 		</view>
 		<div class="boxa1">
 			<view>
+				<span>当前情感：</span>{{moodType}}
 				<u-popup :show="isOpen" mode="bottom" @close="close" @open="open()" :closeOnClickOverlay="true">
 					<view>
 						<ul>
@@ -51,6 +52,7 @@
 </template>
 
 <script>
+	import {recommendList} from "../../../utils/mood.js"
 	var innerAudioContext = uni.createInnerAudioContext();
 	innerAudioContext.autoplay = true;
 	export default {
@@ -63,41 +65,24 @@
 				id: '1',
 				name: '',
 				singer: '',
-				musicList: [{
-					id: '1',
-					name: '致爱丽丝',
-					singer: '贝多芬',
-					src: 'https://sharefs.ali.kugou.com/202201071726/ab47acaff5bdfba17488c8b77dbda749/G209/M06/0C/17/EQ4DAF6wq0uAQkBrACTskSjWf6Y926.mp3',
-				},{
-					id: '2',
-					name: '月光の雲海',
-					singer: '久石譲',
-					src: 'https://sharefs.ali.kugou.com/202201082258/ae422476d8a9ddb658ea0b5e838ff625/KGTX/CLTX001/3767cd187b64b8dcf9841915b6f0256c.mp3',
-				},{
-					id: '3',
-					name: 'Summer ',
-					singer: '久石譲',
-					src: 'http://music.163.com/song/media/outer/url?id=1867107328.mp3',
-				},{
-					id: '4',
-					name: 'あの夏へ',
-					singer: '久石譲',
-					src: 'https://sharefs.ali.kugou.com/202201082258/eb55db6465beae99d5749121c28dd8d7/KGTX/CLTX001/100e772a8a7a988993f228332a43a285.mp3',
-				}, {
-					id: '5',
-					name: '千百度',
-					singer: '许嵩',
-					src: 'https://sharefs.ali.kugou.com/202201071705/43a469e37a93e6959da8c3d536058b2c/KGTX/CLTX001/fe75c71646819dc6508922dee8eb8ad6.mp3',
-				}, {
-					id: '6',
-					name: '成都',
-					singer: '赵磊',
-					src: 'https://sharefs.ali.kugou.com/202201071709/9c0265f2869edcdfefff731026ffcd85/KGTX/CLTX001/a06b033b356bfc974c5245d0195086a5.mp3'
-				}],
-
+				musicList: [],
+				moodType: '未检测到'
 			}
 		},
 		onLoad() {
+			let moodNum = Math.round(Math.random()*6);
+			console.log(moodNum)
+			uni.getStorage({
+				key: "moodNum",
+				success(res){
+					console.log(res.data)
+					moodNum = res.data
+				}
+			})
+			console.log(moodNum)
+			this.moodType = recommendList[moodNum].moodType
+			this.musicList = recommendList[moodNum].musicList
+			console.log(this.moodType)
 		},
 		methods: {
 			changeState() {

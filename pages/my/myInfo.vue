@@ -29,9 +29,16 @@
 				}
 			}
 		},
-		mounted() {
-			this.Info = this.$store.state.user;
-			
+		onLoad() {
+			let Info
+			uni.getStorage({
+				key: "user",
+				success(res){
+					Info = res.data
+					console.log(Info)
+				}
+			})
+			this.Info = Info
 			// getUserInfo().then(res => {
 			// 	if (res.data.code === 200) {
 			// 		console.log(res.data.object);

@@ -158,7 +158,10 @@
 							this.user.phone = object.phonenumber,
 							this.user.createTime = object.createTime,
 							this.user.remark = object.remark,
-							this.$store.commit('login', this.user);
+							uni.setStorage({
+								key: "user",
+								data: this.user
+							})
 							uni.showToast({
 							    title: '登录成功',
 							    duration: 1000
