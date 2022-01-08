@@ -10,7 +10,7 @@ export function beauty(image, type) {
 
 export function getEmotion(image) {
   return request({
-    url: '/emotion/get',
+    url: '/emotion/emotion/get',
     method: 'post',
 	params: {faceBase64: image}
   })
@@ -18,7 +18,7 @@ export function getEmotion(image) {
 
 export function getWeather() {
   return request({
-    url: '"/weather/weather/get"',
+    url: '/weather/weather/get',
     method: 'get',
   })
 }

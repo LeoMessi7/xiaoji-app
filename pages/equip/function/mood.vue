@@ -88,9 +88,9 @@
 			emotion () {
 				let faceBase64;
 				this.image2Base64(this.blob, dataURL => {
-					console.log(123)
+					//console.log(123)
 					faceBase64 = dataURL.split(",")[1];
-					console.log(faceBase64);
+					//console.log(faceBase64);
 					getEmotion(faceBase64).then(res => {
 						if (res.data.code === 200) {
 							this.result = "data:image/jpg;base64," + btoa(new Uint8Array(res.data).reduce((res, byte) => res + String.fromCharCode(byte), ''));
@@ -101,7 +101,7 @@
 								showCancel: false
 							});
 						}						   
-					}).catch(failResponse => {});
+					}).catch(err => {console.log(err)});
 				});
 			}
 		}

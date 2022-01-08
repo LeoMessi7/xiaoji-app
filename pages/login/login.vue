@@ -142,6 +142,7 @@
 				  });
 				} 
 				this.key = key;
+				console.log(this.key)
 			},
 			login() {
 				this.$refs.form1.validate().then(valid => {
@@ -150,14 +151,14 @@
 						if (res.data.code === 200) {
 							console.log(res.data.object);
 							let object = res.data.object;
-							// this.user.id = object.id;
-							// this.user.name = object.username,
-							// this.user.nickname = object.nickname,
-							// this.user.email = object.email,
-							// this.user.phone = object.phone,
-							// this.user.createTime = object.createTime,
-							// this.user.remark = object.remark,
-							// this.$store.commit('login', this.user);
+							this.user.id = object.id;
+							this.user.name = object.userName,
+							this.user.nickname = object.nickName,
+							this.user.email = object.email,
+							this.user.phone = object.phonenumber,
+							this.user.createTime = object.createTime,
+							this.user.remark = object.remark,
+							this.$store.commit('login', this.user);
 							uni.showToast({
 							    title: '登录成功',
 							    duration: 1000
@@ -177,13 +178,13 @@
 				this.$refs.form2.validate().then(valid => {
 					console.log(valid)
 				    userRegister(this.newUserInfo.account, this.newUserInfo.nickname, this.newUserInfo.password).then(res => {
-						if (res.data.code === 200) {
-							console.log(res.data.object);
+						console.log(res)
+						if (res.status === 200) {
+							this.key = 0;
 							uni.showToast({
 							    title: '注册成功',
 							    duration: 1000
 							});
-							changeKey(1);
 						} else {
 							uni.showModal({
 								title: '注册失败',

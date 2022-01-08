@@ -135,7 +135,8 @@
 			}
 		},
 		mounted() {
-			// this.name = this.$store.state.user.nickname;
+			this.name = this.$store.state.user.nickname;
+			console.log(this.$store.state.user)
 			
 			// getUserName().then(res => {
 			// 	if (res.data.code === 200) {

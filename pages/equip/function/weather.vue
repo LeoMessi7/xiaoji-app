@@ -49,7 +49,6 @@ export default {
   },
   methods:{
     GetWeatherData(){
-      let url = "/weather/weather/get";
       getWeather().then(response => {
         // console.log(response.data.result)
         // console.log(response.data.result.realtime)

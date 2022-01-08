@@ -11,11 +11,6 @@
 			<li><span>创建时间：</span>{{Info.createTime}}</li>
 			<li><span>备注信息：</span>{{Info.remark}}</li>
 		</ul>
-
-		<div class="btn">
-			<u-button style="border-radius: 50px;" text="确定" color="#3fd1ad" @click="Back">
-			</u-button>
-		</div>
 	</div>
 </template>
 
